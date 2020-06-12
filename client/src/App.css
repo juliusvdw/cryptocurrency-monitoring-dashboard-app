@@ -1,0 +1,62 @@
+.App {
+}
+
+#body {
+  margin-left: 65px;
+}
+
+#home-container::-webkit-scrollbar {
+  display: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+#watchlist-card {
+  transition: 0.22s;
+}
+
+#watchlist-card:hover {
+  transform: scale(1.012);
+  cursor: pointer;
+}
+
+.movers-card {
+  transition: 0.2s;
+}
+.movers-card:hover {
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+.nav-btn {
+  transition: 0.15s;
+}
+
+.nav-btn:hover {
+  transform: scale(1.02);
+}
+
+.suggestion-list:hover {
+  background-color: #dfe6ff;
+}
+
+.article-link:hover {
+  color: #dfe6ff !important;
+}
+
+.coin-link:hover {
+  text-decoration: underline !important;
+}
+
+.card-btn {
+  opacity: 0;
+  transition: visibility 0s 0.22s, opacity 0.22s linear;
+}
+
+#watchlist-card:hover .card-btn {
+  visibility: visible !important;
+  transition: opacity 0.23s linear;
+  opacity: 1;
+}
