@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
+const config = -require("config");
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(
-      "mongodb+srv://Julesvdw:MvYxDwSncCpW9ho1@cryptohawk-lv7bz.gcp.mongodb.net/cryptohawk?retryWrites=true&w=majority",
-      { useUnifiedTopology: true, useNewUrlParser: true }
-    );
+    await mongoose.connect(`${config.get("DBURI")}`, {
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+    });
 
     console.log("mongodb connected...");
   } catch (err) {

@@ -1,10 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { useLocation } from "react-router-dom";
 
+import AutchContext from "../../context/auth/authContext";
+
 const CoinPage = (props) => {
+  const authContext = useContext(AutchContext);
+
+  const { user, getUser } = authContext;
+
   const location = useLocation();
 
-  console.log(props.match.params.id);
+  useEffect(() => {
+    if (user === null) {
+      getUser();
+    }
+  }, []);
 
   return (
     <div

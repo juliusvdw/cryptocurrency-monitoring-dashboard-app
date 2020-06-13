@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const session = require("express-session");
-
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
@@ -22,7 +21,7 @@ app.use(session({ secret: "helloworld" }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-//Configure passport-local to use account model for authentication
+//Configure passport-local to use User model for authentication
 passport.use(new LocalStrategy(User.authenticate()));
 
 passport.serializeUser(User.serializeUser());
@@ -31,7 +30,7 @@ passport.deserializeUser(User.deserializeUser());
 //connect to database
 connectDB();
 
-//Mount routers
+//Mount routes
 app.use("/auth", auth);
 
 app.listen(5000, console.log("express server started"));
