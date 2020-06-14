@@ -4,21 +4,22 @@ const passport = require("passport");
 
 //Bring in Models
 const User = require("../models/User");
+const Watchlist = require("../models/Watchlist");
 
 //Bring in middleware
 const protected = require("../middleware/auth/protectedRoute");
 
 //Get user route
 // public access
-router.get("/user", (req, res) => {
+router.get("/user", (req, res, next) => {
   res.json({ user: req.user });
 });
 
 //Register route
 //  Public Access
-router.post("/register", (req, res) => {
+router.post("/register", async (req, res) => {
   console.log("registering user");
-  User.register(
+  await User.register(
     new User({ username: req.body.username }),
     req.body.password,
     (err) => {
@@ -27,12 +28,11 @@ router.post("/register", (req, res) => {
         res.json({ success: false });
         return next(err);
       }
-
-      console.log("user registered!");
-
-      res.json({ success: true });
     }
   );
+
+  console.log("user registered!");
+  res.json({ success: true });
 });
 
 //Login Route
@@ -40,6 +40,7 @@ router.post("/register", (req, res) => {
 router.post("/login", passport.authenticate("local"), (req, res) => {
   if (req.user) {
     res.json({ success: true, user: req.user });
+    console.log("user logged in");
   } else {
     res.json({ success: false });
   }

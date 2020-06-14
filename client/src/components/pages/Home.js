@@ -15,7 +15,7 @@ const Home = () => {
   const newsContext = useContext(NewsContext);
   const authContext = useContext(AuthContext);
 
-  const { setCryptos, loading } = watchlistContext;
+  const { setCryptos, loading, getWatchlist } = watchlistContext;
   const { getNews, newsLoading } = newsContext;
   const { getUser, user } = authContext;
 
@@ -25,6 +25,7 @@ const Home = () => {
       getUser();
     }
 
+    getWatchlist();
     setCryptos();
     getNews();
   }, []);

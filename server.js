@@ -9,6 +9,7 @@ const connectDB = require("./db/connectDB");
 
 //Bring in Route files
 const auth = require("./routes/auth");
+const watchlist = require("./routes/watchlist");
 
 //Bring in models
 const User = require("./models/User");
@@ -32,5 +33,5 @@ connectDB();
 
 //Mount routes
 app.use("/auth", auth);
-
+app.use("/watchlist", watchlist);
 app.listen(5000, console.log("express server started"));

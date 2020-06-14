@@ -1,11 +1,11 @@
 import React, { useReducer } from "react";
-import { Redirect } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import axios from "axios";
 
 import AuthContext from "./authContext";
 import AuthReducer from "./authReducer";
 
-import { SET_USER } from "../Types";
+import { SET_USER, CLEAR_WATCHLIST_COINS } from "../Types";
 
 const AuthState = (props) => {
   const initialState = {
@@ -39,9 +39,10 @@ const AuthState = (props) => {
     }
   };
 
-  //User Register
+  //User Login
   const userLogin = async (formData) => {
     try {
+      console.log("logging in");
       const res = await axios({
         method: "post",
         url: "/auth/login",
@@ -59,13 +60,23 @@ const AuthState = (props) => {
         };
         setUser(user);
         setLoginModalShow(false);
+        window.location.reload();
       }
     } catch (err) {
       console.log(err);
     }
   };
 
-  //User Login
+  //Create watchlist
+  const createWatchlist = async () => {
+    try {
+      await axios.post("/watchlist/create");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  //User Register
   const userRegister = async (formData) => {
     try {
       const res = await axios({
@@ -80,9 +91,15 @@ const AuthState = (props) => {
         console.log("succesfully registered user");
 
         setRegisterModalShow(false);
+        await userLogin(formData);
+        await createWatchlist();
       } else {
         console.log("registration failure");
+        return;
       }
+      //Log user in and create watchlsit for account
+      await userLogin(formData);
+      await createWatchlist();
     } catch (err) {
       console.log(err);
     }
@@ -93,6 +110,8 @@ const AuthState = (props) => {
       console.log("logging out");
       await axios.get("/auth/logout");
       dispatch({ type: SET_USER, payload: null });
+
+      window.location.reload();
     } catch (err) {
       console.log(err);
     }

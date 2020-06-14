@@ -3,20 +3,25 @@ import React, { Fragment, useContext, useEffect } from "react";
 import WatchListItem from "./WatchlistItem";
 
 import WatchlistContext from "../../context/watchlist/watchlistContext";
+import AuthContext from "../../context/auth/authContext";
 
 const Watchlist = () => {
   const watchlistContext = useContext(WatchlistContext);
+  const authContext = useContext(AuthContext);
+
+  const { user } = authContext;
   const {
-    watchlistCoins,
+    watchlist,
     setCoinData,
     getCoin,
     cryptos,
     loading,
+    getWatchlist,
   } = watchlistContext;
 
-  if (!loading && cryptos.length > 1) {
+  if (!loading && cryptos.length > 1 && watchlist !== undefined) {
     //Map watchlist state to create watchlist list with watchlistItems
-    const watchList = watchlistCoins.map((coin) => {
+    const watchList = watchlist.map((coin) => {
       //find index of this coin we will be accessing
       const index = cryptos.findIndex((crypto) => crypto.id === coin.id);
 

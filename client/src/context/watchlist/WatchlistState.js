@@ -16,13 +16,15 @@ const WatchlistState = (props) => {
   const initialState = {
     loading: null,
     cryptos: [],
-    watchlistCoins: [
-      { id: "ethereum" },
+    watchlist: [
       { id: "bitcoin" },
+      { id: "ethereum" },
+      { id: "tether" },
       { id: "ripple" },
-      { id: "wanchain" },
-      { id: "nem" },
-      { id: "dogecoin" },
+      { id: "litecoin" },
+      { id: "dash" },
+      { id: "eos" },
+      { id: "cardano" },
     ],
   };
 
@@ -36,6 +38,19 @@ const WatchlistState = (props) => {
       );
       const data = res.data.market_data;
       return data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getWatchlist = async () => {
+    try {
+      const res = await axios.get("/watchlist");
+
+      console.log(res);
+      const watchlist = res.data.watchlist;
+      console.log(watchlist);
+      dispatch({ type: GET_WATCHLIST_COINS, payload: watchlist });
     } catch (err) {
       console.log(err);
     }
@@ -69,10 +84,11 @@ const WatchlistState = (props) => {
     <WatchlistContext.Provider
       value={{
         loading: state.loading,
-        watchlistCoins: state.watchlistCoins,
+        watchlist: state.watchlist,
         cryptos: state.cryptos,
         getCoin,
         setCryptos,
+        getWatchlist,
       }}
     >
       {props.children}
