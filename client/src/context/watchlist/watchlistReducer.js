@@ -6,6 +6,7 @@ import {
   GET_WATCHLIST_COINS,
   CLEAR_WATCHLIST_COINS,
   WATCHLIST_ADD,
+  WATCHLIST_DELETE,
 } from "../Types";
 
 export default (state, action) => {
@@ -40,10 +41,12 @@ export default (state, action) => {
         watchlistCoins: action.payload,
       };
     case WATCHLIST_ADD:
+    case WATCHLIST_DELETE:
       return {
         ...state,
         wathchlist: action.payload,
       };
+
     case SET_LOADING:
       return {
         ...state,

@@ -10,6 +10,7 @@ import {
   SET_LOADING,
   CLEAR_LOADING,
   WATCHLIST_ADD,
+  WATCHLIST_DELETE,
 } from "../Types";
 import watchlistContext from "./watchlistContext";
 
@@ -49,7 +50,7 @@ const WatchlistState = (props) => {
       const res = await axios.get("/watchlist");
 
       console.log(res);
-      const watchlist = res.data.watchlist;
+      const watchlist = await res.data.watchlist;
       console.log(watchlist);
       dispatch({ type: GET_WATCHLIST_COINS, payload: watchlist });
     } catch (err) {
@@ -63,7 +64,7 @@ const WatchlistState = (props) => {
       const res = await axios.get(
         `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=250`
       );
-      const data = res.data;
+      const data = await res.data;
 
       dispatch({ type: SET_CRYPTOS, payload: data });
     } catch (err) {
@@ -80,9 +81,25 @@ const WatchlistState = (props) => {
         data: { coinId: id },
         url: "/watchlist",
       });
-      const watchlist = res.data.watchlist;
+      const watchlist = await res.data.watchlist;
 
       dispatch({ type: WATCHLIST_ADD, payload: watchlist });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const watchlistDelete = async (id) => {
+    try {
+      const res = await axios({
+        method: "delete",
+        data: { coinId: id },
+        url: "/watchlist",
+      });
+      const watchlist = await res.data.watchlist;
+
+      dispatch({ type: WATCHLIST_DELETE, payload: watchlist });
+      window.location.reload();
     } catch (err) {
       console.log(err);
     }
@@ -106,6 +123,7 @@ const WatchlistState = (props) => {
         setCryptos,
         getWatchlist,
         watchlistAdd,
+        watchlistDelete,
       }}
     >
       {props.children}

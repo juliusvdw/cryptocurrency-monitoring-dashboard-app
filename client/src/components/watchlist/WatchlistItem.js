@@ -12,6 +12,7 @@ const WatchlistItem = (props) => {
     watchlistCoins,
     cryptos,
     loading,
+    watchlistDelete,
   } = watchlistContext;
 
   let { price, high, low, percentChange, symbol } = props.coinData;
@@ -78,21 +79,24 @@ const WatchlistItem = (props) => {
           </div>
           <div className="row w-90 mx-auto" style={{ fontSize: "0.8rem" }}>
             {" "}
-            <span
-              className="btn btn-outline-danger mt-3  card-btn mr-1"
-              style={{
-                height: "30px",
-                width: "45px",
-                fontSize: "0.7rem",
-                color: "white",
-                visibility: "hidden",
-                borderWidth: "1.2px",
-              }}
-            >
-              <strong>
-                <i className="fas fa-trash"></i>
-              </strong>
-            </span>
+            <Link to="#">
+              <span
+                className="btn btn-outline-danger mt-3  card-btn mr-1"
+                style={{
+                  height: "30px",
+                  width: "45px",
+                  fontSize: "0.7rem",
+                  color: "white",
+                  visibility: "hidden",
+                  borderWidth: "1.2px",
+                }}
+                onClick={() => watchlistDelete(id)}
+              >
+                <strong>
+                  <i className="fas fa-trash"></i>
+                </strong>
+              </span>
+            </Link>
             <Link to={`/chart/${symbol}usd`}>
               <span
                 className="btn btn-outline-primary mt-3  card-btn"

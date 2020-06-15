@@ -24,7 +24,6 @@ const Home = () => {
     if (user === null) {
       getUser();
     }
-
     getWatchlist();
     setCryptos();
     getNews();

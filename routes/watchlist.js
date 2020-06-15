@@ -84,4 +84,31 @@ router.put("/", async (req, res) => {
   }
 });
 
+//Delete from watchlist route
+//Private accces
+router.delete("/", async (req, res) => {
+  try {
+    const doc = await Watchlist.findOne({ user: req.user._id });
+    const coinId = req.body.coinId;
+    let watchlist = await doc.watchlist;
+
+    if (!doc) {
+      res.status(500).json({ success: false, msg: "watchlist not found" });
+      return next;
+    }
+
+    //remove the coin that has been deleted from watchlist
+    console.log(coinId);
+    watchlist = watchlist.filter((coin) => coin.id !== coinId.toLowerCase());
+
+    doc.watchlist = watchlist;
+    await doc.save();
+
+    console.log(watchlist);
+    res.status(200).json({ success: true, watchlist });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 module.exports = router;
