@@ -33,8 +33,6 @@ const WatchlistItem = (props) => {
     props.coinId.charAt(0).toUpperCase()
   );
 
-  console.log(cryptos[0]);
-
   return (
     <Link
       to={`/coin/${id}`}

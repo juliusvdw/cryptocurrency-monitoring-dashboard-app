@@ -38,13 +38,19 @@ export default (state, action) => {
     case SET_COIN_DATA:
       return {
         ...state,
-        watchlistCoins: action.payload,
+        watchList: action.payload,
       };
     case WATCHLIST_ADD:
-    case WATCHLIST_DELETE:
       return {
         ...state,
         wathchlist: action.payload,
+      };
+    case WATCHLIST_DELETE:
+      return {
+        ...state,
+        watchlist: state.watchlist.filter((coin) => {
+          return coin.id !== action.payload;
+        }),
       };
 
     case SET_LOADING:

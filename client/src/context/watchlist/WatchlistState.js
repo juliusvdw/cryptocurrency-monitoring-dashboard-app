@@ -98,8 +98,10 @@ const WatchlistState = (props) => {
       });
       const watchlist = await res.data.watchlist;
 
-      dispatch({ type: WATCHLIST_DELETE, payload: watchlist });
-      window.location.reload();
+      id = id.toLowerCase();
+
+      dispatch({ type: WATCHLIST_DELETE, payload: id });
+      // window.location.reload();
     } catch (err) {
       console.log(err);
     }
