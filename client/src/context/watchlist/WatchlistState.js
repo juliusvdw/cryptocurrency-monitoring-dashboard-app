@@ -9,6 +9,7 @@ import {
   SET_CRYPTOS,
   SET_LOADING,
   CLEAR_LOADING,
+  WATCHLIST_ADD,
 } from "../Types";
 import watchlistContext from "./watchlistContext";
 
@@ -72,6 +73,21 @@ const WatchlistState = (props) => {
     clearLoading();
   };
 
+  const watchlistAdd = async (id) => {
+    try {
+      const res = await axios({
+        method: "put",
+        data: { coinId: id },
+        url: "/watchlist",
+      });
+      const watchlist = res.data.watchlist;
+
+      dispatch({ type: WATCHLIST_ADD, payload: watchlist });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const setLoading = () => {
     dispatch({ type: "SET_LOADING" });
   };
@@ -89,6 +105,7 @@ const WatchlistState = (props) => {
         getCoin,
         setCryptos,
         getWatchlist,
+        watchlistAdd,
       }}
     >
       {props.children}

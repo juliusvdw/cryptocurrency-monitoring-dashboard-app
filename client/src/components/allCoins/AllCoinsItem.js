@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
+import WatchlistContext from "../../context/watchlist/watchlistContext";
+
 const AllCoinsItem = (props) => {
+  const watchlistContext = useContext(WatchlistContext);
+
+  const { watchlistAdd } = watchlistContext;
   const {
     id,
     current_price,
@@ -52,7 +57,11 @@ const AllCoinsItem = (props) => {
         $ {total_volume}
       </div>
 
-      <div className="col-lg-3 col-md-3 d-none d-lg-block">$ {market_cap}</div>
+      <div className="col-lg-2 col-md-2 d-none d-lg-block">$ {market_cap}</div>
+
+      <div className="col-lg-1 col-md-2">
+        <span onClick={() => watchlistAdd(id)}>+</span>
+      </div>
     </div>
   );
 };

@@ -43,6 +43,7 @@ router.get("/", async (req, res, next) => {
     }
     //Search for watchlist in DB
     const doc = await Watchlist.findOne({ user: req.user._id });
+    const watchlist = await doc.watchlist;
 
     //Alert if watchlist cant be found
     if (!doc) {
@@ -50,7 +51,7 @@ router.get("/", async (req, res, next) => {
       res.status("500").json({ success: false, msg: "Watchlist not found" });
     }
 
-    console.log(doc);
+    console.log(watchlist);
 
     //return watchlist in json format
     res.status(200).json({ success: true, watchlist: doc.watchlist });
@@ -64,15 +65,19 @@ router.get("/", async (req, res, next) => {
 router.put("/", async (req, res) => {
   try {
     const coinId = req.body.coinId;
-    const doc = Watchlist.findOne({ user: req.user.id });
+    const doc = await Watchlist.findOne({ user: req.user._id });
+    const watchlist = await doc.watchlist;
+
+    console.log(doc);
     if (!doc) {
       res.status(500).json({ success: false, msg: "watchlist not found" });
+      return next;
     }
     //If watchlist is found, continue to update it
-    doc.watchlist.push({ coinId });
+    doc.watchlist = [...watchlist, { id: coinId }];
     await doc.save();
 
-    res.status(200).json({ success: true, watchlist: doc });
+    res.status(200).json({ success: true, watchlist: doc.watchlist });
   } catch (err) {
     console.log(err);
     res.status(400).json({ success: false });
