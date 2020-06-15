@@ -31,7 +31,7 @@ router.post("/register", async (req, res) => {
     }
   );
 
-  console.log("user registered!");
+  console.log("user registered");
   res.json({ success: true });
 });
 

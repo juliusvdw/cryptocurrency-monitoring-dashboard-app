@@ -36,8 +36,11 @@ router.post("/create", async (req, res) => {
 
 //Fetch Watchlist route
 //Private Access
-router.get("/", async (req, res) => {
+router.get("/", async (req, res, next) => {
   try {
+    if (!req.user) {
+      return next;
+    }
     //Search for watchlist in DB
     const doc = await Watchlist.findOne({ user: req.user._id });
 
@@ -51,7 +54,6 @@ router.get("/", async (req, res) => {
 
     //return watchlist in json format
     res.status(200).json({ success: true, watchlist: doc.watchlist });
-    console.log(watchlist);
   } catch (err) {
     console.log(err);
     res.status(400).json({ success: false });
