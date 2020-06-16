@@ -15,7 +15,7 @@ const WatchlistItem = (props) => {
     watchlistDelete,
   } = watchlistContext;
 
-  let { price, high, low, percentChange, symbol } = props.coinData;
+  let { price, high, low, percentChange, symbol, image } = props.coinData;
 
   //modify the data for display purposes
   let percentColour;
@@ -49,7 +49,19 @@ const WatchlistItem = (props) => {
       >
         <div className="card-body">
           <div className="row  mx-auto" style={{ marginBottom: "22px" }}>
-            <span style={{ fontSize: "1.3rem", fontWeight: "bold" }}>{id}</span>
+            <span style={{ maxHeight: "20px", maxWidth: "20px" }}>
+              <img className="img-fluid d-none d-lg-block" src={`${image}`} />
+            </span>
+            <span
+              style={{
+                fontSize: "1.3rem",
+                fontWeight: "bold",
+                paddingLeft: "15px",
+              }}
+            >
+              {id}
+            </span>
+
             <span
               className="ml-auto"
               style={{

@@ -60,3 +60,15 @@ body::-webkit-scrollbar {
   transition: opacity 0.23s linear;
   opacity: 1;
 }
+
+.watchlist-add-btn {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.2s, opacity 0.22s linear;
+}
+.allcoin-item-container:hover .watchlist-add-btn {
+  visibility: visible;
+  transition: opacity 0.2s linear;
+  opacity: 1;
+  cursor: pointer;
+}

@@ -31,11 +31,12 @@ const Watchlist = () => {
       let low = cryptos[index].low_24h;
       let percentChange = cryptos[index].price_change_percentage_24h;
       let symbol = cryptos[index].symbol;
+      let image = cryptos[index].image;
       return (
         <div className="col-lg-3 col-md-5">
           <WatchListItem
             coinId={coin.id}
-            coinData={{ price, high, low, percentChange, symbol }}
+            coinData={{ price, high, low, percentChange, symbol, image }}
           />
         </div>
       );

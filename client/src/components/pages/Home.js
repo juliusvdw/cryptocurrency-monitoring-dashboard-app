@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useContext } from "react";
+import React, { Fragment, useEffect, useContext, useState } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -11,6 +11,8 @@ import NewsContext from "../../context/news/newsContext";
 import AuthContext from "../../context/auth/authContext";
 
 const Home = () => {
+  const [watchlistAlert, setWatchlistAlert] = useState("block");
+
   const watchlistContext = useContext(WatchlistContext);
   const newsContext = useContext(NewsContext);
   const authContext = useContext(AuthContext);
@@ -46,11 +48,31 @@ const Home = () => {
           <span className="mb-4" style={{ fontSize: "1.5rem" }}>
             <strong>Watchlist</strong>
           </span>
+          {user === null && (
+            <span
+              className="alert alert-primary alert-dismissible mt-2"
+              role="alert"
+              style={{
+                fontSize: "0.8rem",
+                display: watchlistAlert,
+                width: "370px",
+              }}
+            >
+              <strong> Create an account to modify the watchlist </strong>
+              <button
+                type="button"
+                class="close"
+                onClick={() => setWatchlistAlert("none")}
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </span>
+          )}
           <WatchList />
         </div>
         <div className="text-white  d-md-none" style={{ paddingRight: "40px" }}>
           <span style={{ fontSize: "1.5rem", marginRight: "20px" }}>
-            <i className="fas fa-money-check-alt"></i>
+            s<i className="fas fa-money-check-alt"></i>
           </span>
           <span className="mb-4" style={{ fontSize: "1.5rem" }}>
             <strong>Watchlist</strong>

@@ -19,7 +19,7 @@ const AllCoinsItem = (props) => {
 
   return (
     <div
-      className="row w-100 pt-3"
+      className="row w-100 pt-3 allcoin-item-container"
       style={{ minHeight: "60px", borderBottom: "1px solid #555555" }}
     >
       <div className="col-lg-3 col-md-4 d-flex flex-row">
@@ -59,8 +59,13 @@ const AllCoinsItem = (props) => {
 
       <div className="col-lg-2 col-md-2 d-none d-lg-block">$ {market_cap}</div>
 
-      <div className="col-lg-1 col-md-2">
-        <span onClick={() => watchlistAdd(id)}>+</span>
+      <div className="col-lg-1 col-md-2 ">
+        <span onClick={() => watchlistAdd(id)} className="watchlist-add-btn">
+          <i
+            className="fas fa-plus"
+            style={{ fontSize: "1.6rem", color: "lightgreen" }}
+          />
+        </span>
       </div>
     </div>
   );

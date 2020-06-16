@@ -2,11 +2,14 @@ import React, { useEffect, useContext } from "react";
 import { useLocation } from "react-router-dom";
 
 import AutchContext from "../../context/auth/authContext";
+import CoinFeedContext from "../../context/coinFeed/coinFeedContext";
 
 const CoinPage = (props) => {
   const authContext = useContext(AutchContext);
+  const coinFeedContext = useContext(CoinFeedContext);
 
   const { user, getUser } = authContext;
+  const { getCoinFeed } = coinFeedContext;
 
   const location = useLocation();
 
@@ -14,6 +17,8 @@ const CoinPage = (props) => {
     if (user === null) {
       getUser();
     }
+
+    getCoinFeed(props.match.params.id);
   }, []);
 
   return (
@@ -22,7 +27,16 @@ const CoinPage = (props) => {
       id="home-container"
       style={{ marginTop: "35px", overflowY: "auto" }}
     >
-      This is the {`${props.match.params.id}`} Page
+      <div
+        className="text-white d-none d-md-block"
+        style={{
+          paddingLeft: "30px",
+          paddingRight: "40px",
+          marginTop: "30px",
+        }}
+      >
+        This is the {`${props.match.params.id}`} Page
+      </div>
     </div>
   );
 };
