@@ -5,6 +5,9 @@ import AutchContext from "../../context/auth/authContext";
 import CoinFeedContext from "../../context/coinFeed/coinFeedContext";
 import WatchlistContext from "../../context/watchlist/watchlistContext";
 
+import CoinStats from "../coin/CoinStats";
+import CoinNews from "../coin/CoinNews";
+
 const CoinPage = (props) => {
   const authContext = useContext(AutchContext);
   const coinFeedContext = useContext(CoinFeedContext);
@@ -31,9 +34,35 @@ const CoinPage = (props) => {
   });
 
   const currentCoin = cryptos[coinIndex];
-  console.log(currentCoin);
 
-  //modify coinData to be displayed
+  //declare variables to use oce currentCoin has loaded
+
+  let percentColour;
+  let percentChange;
+  let price;
+  let id;
+
+  //modify the data for display purposes if currentCoin has loaded
+
+  if (currentCoin !== undefined) {
+    price = currentCoin.current_price;
+    percentChange = currentCoin.price_change_percentage_24h;
+    id = currentCoin.id;
+
+    percentChange > 0
+      ? (percentColour = "lightgreen")
+      : (percentColour = "#F14848");
+
+    percentChange > 0
+      ? (percentChange = percentChange.toString().slice(0, 4))
+      : (percentChange = percentChange.toString().slice(1, 5));
+
+    price.toString().length === 1
+      ? (price = `${price},00`)
+      : (price = price.toString().slice(0, 7));
+
+    id = id.replace(id.charAt(0), id.charAt(0).toUpperCase());
+  }
 
   return (
     <div
@@ -50,35 +79,58 @@ const CoinPage = (props) => {
         }}
       >
         <div className="row">
-          <div className="col-lg-5 offset-lg-1 d-flex flex-row">
+          <div className="col-lg-5 offset-lg-2 d-flex flex-row">
             {currentCoin && (
               <>
                 <img
                   className="img-fluid"
-                  src={`${currentCoin.image}`}
-                  style={{ maxHeight: "150px", maxWidth: "150px" }}
+                  src={currentCoin && `${currentCoin.image}`}
+                  style={{ maxHeight: "100px", maxWidth: "150px" }}
                 />
 
                 <div className="my-auto pl-4">
-                  <h1 style={{ fontSize: "3.5rem" }} className="mb-0">
-                    {currentCoin.id}
-                  </h1>
+                  <p style={{ fontSize: "2.5rem" }} className="mb-0">
+                    {id}
+                  </p>
                   <div className="d-flex flex-row">
-                    <h1 style={{ fontSize: "2.5rem" }} className="pt-1">
-                      $ {currentCoin.current_price}
+                    <h1 style={{ fontSize: "1.5rem" }} className="pt-1">
+                      $ {price}
                     </h1>
                     <span
                       className="my-auto pl-4"
-                      style={{ fontSize: "2.5rem" }}
+                      style={{ fontSize: "1.5rem", color: percentColour }}
                     >
-                      {currentCoin.price_change_percentage_24h}
+                      <strong>{percentChange} % </strong>
                     </span>
                   </div>
                 </div>
               </>
             )}
           </div>
-          <div className="col-lg-5 "></div>
+          <div className="col-lg-5 d-flex flex-row">
+            <div className=" mt-4">
+              <div
+                className="btn btn-outline-primary mx-2 text-white"
+                style={{ fontSize: "13.5px" }}
+              >
+                <strong>View Chart</strong>
+              </div>
+              <div
+                className="btn btn-outline-success mx-2 text-white"
+                style={{ fontSize: "13.5px" }}
+              >
+                <strong> Add To Watchlist</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="row text-white " style={{ marginTop: "30px" }}>
+          <div className="col-lg-6 offset-lg-1 ">
+            <CoinNews />
+          </div>
+          <div className="col-lg-4  ">
+            <CoinStats />
+          </div>
         </div>
       </div>
     </div>
