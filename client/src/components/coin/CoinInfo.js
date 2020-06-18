@@ -4,9 +4,29 @@ import CoinFeedContext from "../../context/coinFeed/coinFeedContext";
 
 const CoinInfo = () => {
   const coinFeedContext = useContext(CoinFeedContext);
-  const { news } = coinFeedContext;
+  const { stats } = coinFeedContext;
 
-  return <div className="jumbotron"></div>;
+  //declare output var
+  let output;
+
+  //Dclare var to store descriptions once it ha loaded
+  let description;
+
+  //see whether stats have loaded
+  if (stats) description = stats.description.en;
+
+  //Determine wheter the news or loading will be displayed based on the state of news
+  if (!stats) {
+    output = <div>Loading</div>;
+  } else {
+    output = <div dangerouslySetInnerHTML={{ __html: description }}></div>;
+  }
+
+  return (
+    <div className="jumbotron " style={{ backgroundColor: "#2D2D2D" }}>
+      {output}
+    </div>
+  );
 };
 
 export default CoinInfo;
