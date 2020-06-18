@@ -2,6 +2,7 @@ import React, { Fragment, useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 import WatchlistContext from "../../context/watchlist/watchlistContext";
+import CoinFeedContext from "../../context/coinFeed/coinFeedContext";
 
 const NavSearchBox = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -10,7 +11,10 @@ const NavSearchBox = () => {
   const [showSuggestions, setShowSuggestions] = useState("none");
 
   const watchlistContext = useContext(WatchlistContext);
+  const coinFeedContext = useContext(CoinFeedContext);
+
   const { cryptos, setCryptos } = watchlistContext;
+  const { getCoinFeed } = coinFeedContext;
 
   let history = useHistory();
 
@@ -50,9 +54,17 @@ const NavSearchBox = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    history.push(`/coin/${searchValue}`);
     setSearchValue("");
     setShowSuggestions("none");
+
+    history.push(`/coin/${searchValue}`);
+  };
+
+  //onCLick if user clicks the link
+  const onClick = (e) => {
+    console.log(searchValue);
+    clearSuggestions();
+    clearSearch();
   };
 
   //clear suggestions
@@ -74,7 +86,7 @@ const NavSearchBox = () => {
     ? (suggestionsList = suggestions.map((value) => (
         <Link
           to={`/coin/${value}`}
-          onClick={() => clearSearch()}
+          onClick={() => onClick()}
           style={{ textDecoration: "none", color: "black" }}
         >
           <li
@@ -85,7 +97,7 @@ const NavSearchBox = () => {
             }}
             className=" suggestion-list w-100"
             onClick={(e) => {
-              setSearchValue(e.target.innerText);
+              getCoinFeed(e.target.innerText);
             }}
           >
             <p className="pt-2 ml-2 pb-2">{value}</p>
