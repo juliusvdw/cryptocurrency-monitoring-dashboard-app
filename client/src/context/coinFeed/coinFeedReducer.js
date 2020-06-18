@@ -15,7 +15,7 @@ export default (state, action) => {
     case SET_COIN_STATS:
       return {
         ...state,
-        stats: action.payload,
+        stats: { ...action.payload },
       };
     case SET_LOADING:
       return {
