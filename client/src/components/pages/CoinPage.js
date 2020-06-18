@@ -6,7 +6,7 @@ import CoinFeedContext from "../../context/coinFeed/coinFeedContext";
 import WatchlistContext from "../../context/watchlist/watchlistContext";
 
 import CoinStats from "../coin/CoinStats";
-import CoinNews from "../coin/CoinNews";
+import CoinInfo from "../coin/CoinInfo";
 
 const CoinPage = (props) => {
   const authContext = useContext(AutchContext);
@@ -23,8 +23,9 @@ const CoinPage = (props) => {
     if (user === null) {
       getUser();
     }
-
-    getCoinFeed(props.match.params.id);
+    //Make the coin id lower case then detch data
+    const id = props.match.params.id;
+    getCoinFeed(id.toLowerCase());
   }, []);
 
   //Access the current coin from the cryptos array
@@ -79,7 +80,7 @@ const CoinPage = (props) => {
         }}
       >
         <div className="row">
-          <div className="col-lg-5 offset-lg-2 d-flex flex-row">
+          <div className="col-lg-6 offset-lg-1 d-flex flex-row">
             {currentCoin && (
               <>
                 <img
@@ -125,11 +126,13 @@ const CoinPage = (props) => {
           </div>
         </div>
         <div className="row text-white " style={{ marginTop: "30px" }}>
-          <div className="col-lg-6 offset-lg-1 ">
-            <CoinNews />
-          </div>
-          <div className="col-lg-4  ">
+          <div className="col-lg-9 offset-lg-1 ">
             <CoinStats />
+          </div>
+        </div>
+        <div className="row text-white " style={{ marginTop: "5px" }}>
+          <div className="col-lg-9 offset-lg-1 ">
+            <CoinInfo />
           </div>
         </div>
       </div>
