@@ -24,23 +24,17 @@ const CoinFeedState = (props) => {
   const getCoinFeed = async (id) => {
     setLoading();
     try {
-      //fetch news articles for coin
-      const newsRes = await axios.get(
-        `https://cryptocontrol.io/api/v1/public/news/coin/${id}?latest=true&key=eaab98db0c6387dda93def19b44f3035`
-      );
       //fetch statistics and info for current coin
-      const statsRes = await axios.get(
+      const res = await axios.get(
         `https://api.coingecko.com/api/v3/coins/${id}`
       );
+      const stats = await res.data;
+      console.log(stats);
 
-      const articles = await newsRes.data.slice(0, 11);
-      const stats = await statsRes.data;
-
-      dispatch({ type: SET_COIN_ARTICLES, payload: articles });
       dispatch({ type: SET_COIN_STATS, payload: stats });
       clearLoading();
     } catch (err) {
-      console.log(err);
+      console.log(err.message);
     }
   };
 
