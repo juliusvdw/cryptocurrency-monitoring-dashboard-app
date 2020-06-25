@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, Fragment } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 import AutchContext from "../../context/auth/authContext";
 import CoinFeedContext from "../../context/coinFeed/coinFeedContext";
@@ -15,7 +15,7 @@ const CoinPage = (props) => {
 
   const { user, getUser } = authContext;
   const { getCoinFeed } = coinFeedContext;
-  const { cryptos } = watchlistContext;
+  const { cryptos, watchlistAdd } = watchlistContext;
 
   const location = useLocation();
 
@@ -42,6 +42,7 @@ const CoinPage = (props) => {
   let percentChange;
   let price;
   let id;
+  let symbol;
 
   //modify the data for display purposes if currentCoin has loaded
 
@@ -49,6 +50,7 @@ const CoinPage = (props) => {
     price = currentCoin.current_price;
     percentChange = currentCoin.price_change_percentage_24h;
     id = currentCoin.id;
+    symbol = currentCoin.symbol;
 
     percentChange > 0
       ? (percentColour = "lightgreen")
@@ -61,8 +63,6 @@ const CoinPage = (props) => {
     price.toString().length === 1
       ? (price = `${price},00`)
       : (price = price.toString().slice(0, 7));
-
-    id = id.replace(id.charAt(0), id.charAt(0).toUpperCase());
   }
 
   return (
@@ -91,7 +91,7 @@ const CoinPage = (props) => {
 
                 <div className="my-auto pl-4">
                   <p style={{ fontSize: "2.5rem" }} className="mb-0">
-                    {id}
+                    {id.replace(id.charAt(0), id.charAt(0).toUpperCase())}
                   </p>
                   <div className="d-flex flex-row">
                     <h1 style={{ fontSize: "1.5rem" }} className="pt-1">
@@ -110,18 +110,23 @@ const CoinPage = (props) => {
           </div>
           <div className="col-lg-5 d-flex flex-row">
             <div className=" mt-4">
-              <div
-                className="btn btn-outline-primary mx-2 text-white"
-                style={{ fontSize: "13.5px" }}
-              >
-                <strong>View Chart</strong>
-              </div>
-              <div
-                className="btn btn-outline-success mx-2 text-white"
-                style={{ fontSize: "13.5px" }}
-              >
-                <strong> Add To Watchlist</strong>
-              </div>
+              {user && (
+                <div
+                  className="btn btn-outline-success mx-2 text-white"
+                  style={{ fontSize: "13.5px" }}
+                  onClick={() => watchlistAdd(id)}
+                >
+                  <strong> Add To Watchlist</strong>
+                </div>
+              )}
+              <Link to={`/chart/${symbol}usd`}>
+                <div
+                  className="btn btn-outline-primary mx-2 text-white"
+                  style={{ fontSize: "13.5px" }}
+                >
+                  <strong>View Chart</strong>
+                </div>
+              </Link>
             </div>
           </div>
         </div>
