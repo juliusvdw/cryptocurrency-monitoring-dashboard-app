@@ -23,7 +23,7 @@ const CoinPage = (props) => {
     if (user === null) {
       getUser();
     }
-    //Make the coin id lower case then detch data
+    //Make the coin id lower case then fetch data
     const id = props.match.params.id;
     getCoinFeed(id.toLowerCase());
   }, []);
@@ -36,7 +36,7 @@ const CoinPage = (props) => {
 
   const currentCoin = cryptos[coinIndex];
 
-  //declare variables to use oce currentCoin has loaded
+  //declare variables to use once currentCoin has loaded
 
   let percentColour;
   let percentChange;

@@ -12,6 +12,7 @@ const Watchlist = () => {
     loading,
   } = watchlistContext;
 
+  //Create the top movers list by sorting cryptos by price change percentage.
   if (!loading && cryptos.length > 1) {
     const topMoversList = cryptos.sort(
       (a, b) => b.price_change_percentage_24h - a.price_change_percentage_24h
@@ -19,6 +20,7 @@ const Watchlist = () => {
 
     let finalList = [];
 
+    //Push the top 8 movers to the topMoversList
     for (let i = 0; i < 8; i++) {
       let id = topMoversList[i].id;
       id = id.replace(id.charAt(0), id.charAt(0).toUpperCase());
@@ -28,6 +30,7 @@ const Watchlist = () => {
       finalList.push({ id, percentChange, symbol });
     }
 
+    //Map the finalList and output the formatted data
     const outputList = finalList.map((coin) => {
       return (
         <div className="col-lg-3 col-md-6 ">

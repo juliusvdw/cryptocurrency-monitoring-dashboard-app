@@ -9,7 +9,7 @@ const CoinInfo = () => {
   //declare output var
   let output;
 
-  //Dclare var to store descriptions once it ha loaded
+  //Dclare var to store descriptions once it has loaded
   let description;
 
   //see whether stats have loaded

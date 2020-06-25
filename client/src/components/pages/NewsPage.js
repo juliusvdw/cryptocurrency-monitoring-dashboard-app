@@ -5,7 +5,6 @@ import News from "../news/News";
 import NewsContext from "../../context/news/newsContext";
 import WatchlistContext from "../../context/watchlist/watchlistContext";
 import AuthContext from "../../context/auth/authContext";
-import { SET_CRYPTOS } from "../../context/Types";
 
 const NewsPage = () => {
   const newsContext = useContext(NewsContext);

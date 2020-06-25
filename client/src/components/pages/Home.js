@@ -22,6 +22,7 @@ const Home = () => {
   const { getUser, user } = authContext;
 
   //fetch all crypto prices and add to state with useEffect
+  //Fetch user on page load
   useEffect(() => {
     if (user === null) {
       getUser();

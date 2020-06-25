@@ -14,6 +14,7 @@ const News = () => {
 
   const { news, newsLoading } = newsContext;
 
+  //Map the news array and output each NewsItem with respective data
   if (!newsLoading && news.length > 1) {
     const newsList = news.map((article) => {
       const title = article.title,

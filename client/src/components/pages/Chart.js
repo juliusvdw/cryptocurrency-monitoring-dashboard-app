@@ -13,6 +13,7 @@ const Chart = (props) => {
       getUser();
     }
   }, []);
+
   //determine which chart to display based on url params
   let coin;
   props.match.params.coin === "default"

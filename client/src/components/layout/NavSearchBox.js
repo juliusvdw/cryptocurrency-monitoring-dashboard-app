@@ -25,7 +25,7 @@ const NavSearchBox = () => {
     }
   }, []);
 
-  //fetch crypto suggestion values from cryptos state and add them to suggestion values
+  //fetch crypto suggestion values from cryptos state and push them to suggestion values
   let suggestionValues = [];
   cryptos.length > 1
     ? cryptos.forEach((coin) => suggestionValues.push(coin.id))
