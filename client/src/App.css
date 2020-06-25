@@ -1,8 +1,8 @@
 .App {
 }
 
-#body {
-  margin-left: 65px;
+#body-mobile {
+  margin-left: 0px;
 }
 
 #home-container::-webkit-scrollbar {

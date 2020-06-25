@@ -61,7 +61,10 @@ function App(props) {
                         background: "#1d1d1d",
                       }}
                     >
-                      <div id="body" className="d-flex w-100 h-100 text-white ">
+                      <div
+                        id="body"
+                        className="d-flex w-100 h-100 text-white  "
+                      >
                         <Switch>
                           <Route
                             exact
