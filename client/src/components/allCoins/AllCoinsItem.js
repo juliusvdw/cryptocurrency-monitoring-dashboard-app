@@ -39,10 +39,10 @@ const AllCoinsItem = (props) => {
         </span>
       </div>
 
-      <div className="col-lg-2 col-md-3">$ {current_price}</div>
+      <div className="col-lg-2 col-md-3 mt-1 ">$ {current_price}</div>
 
       <div
-        className="col-lg-1 col-md-2"
+        className="col-lg-1 col-md-2 mt-1 mb-2"
         style={{
           color: price_change_percentage_24h > 0 ? "lightgreen" : "#F14848",
         }}
@@ -59,10 +59,10 @@ const AllCoinsItem = (props) => {
 
       <div className="col-lg-2 col-md-2 d-none d-lg-block">$ {market_cap}</div>
 
-      <div className="col-lg-1 col-md-2 ">
+      <div className="col-lg-1 col-md-2 d-none d-md-block">
         <span onClick={() => watchlistAdd(id)} className="watchlist-add-btn">
           <i
-            className="fas fa-plus"
+            className="fas fa-plus "
             style={{ fontSize: "1.6rem", color: "lightgreen" }}
           />
         </span>

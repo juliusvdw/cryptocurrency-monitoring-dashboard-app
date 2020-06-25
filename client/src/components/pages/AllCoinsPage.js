@@ -30,7 +30,7 @@ const AllCoinsPage = () => {
       >
         <div
           className="text-white d-none d-md-block"
-          style={{ paddingLeft: "30px", paddingRight: "40px" }}
+          style={{ paddingLeft: "60px", paddingRight: "40px" }}
         >
           <span
             className=""
@@ -41,8 +41,14 @@ const AllCoinsPage = () => {
         </div>
         <div
           className="d-none d-md-block"
-          style={{ paddingLeft: "80px", paddingRight: "80px" }}
+          style={{ paddingLeft: "130px", paddingRight: "80px" }}
         >
+          <AllCoins />
+        </div>
+        <div className="d-block d-md-none" style={{ paddingLeft: "15px" }}>
+          <span className="" style={{ fontSize: "1.3rem" }}>
+            <strong>Top Coins by Mkt Cap</strong>
+          </span>
           <AllCoins />
         </div>
       </div>

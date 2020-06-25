@@ -29,11 +29,11 @@ const AllCoins = () => {
             <p className="pt-4 pl-3">Coin</p>
           </div>
 
-          <div className="col-lg-2 col-md-3">
+          <div className="col-lg-2 col-md-3 d-none d-md-block">
             <p className="pt-4">Price</p>
           </div>
 
-          <div className="col-lg-1 col-md-2">
+          <div className="col-lg-1 col-md-2 d-none d-md-block">
             <p className="pt-4">24h</p>
           </div>
 
