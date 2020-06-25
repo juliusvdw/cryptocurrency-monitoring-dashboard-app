@@ -21,7 +21,25 @@ const Chart = (props) => {
     : (coin = props.match.params.coin);
 
   return (
-    <TradingViewWidget symbol={coin} theme={Themes.DARK} locale="en" autosize />
+    <>
+      <div className="d-none d-md-block w-100" style={{ paddingLeft: "65px" }}>
+        <TradingViewWidget
+          symbol={coin}
+          theme={Themes.DARK}
+          locale="en"
+          autosize
+        />
+      </div>
+
+      <div className="d-md-none w-100">
+        <TradingViewWidget
+          symbol={coin}
+          theme={Themes.DARK}
+          locale="en"
+          autosize
+        />
+      </div>
+    </>
   );
 };
 

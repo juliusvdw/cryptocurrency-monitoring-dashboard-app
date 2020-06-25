@@ -72,9 +72,9 @@ const CoinPage = (props) => {
       style={{ marginTop: "35px", overflowY: "auto" }}
     >
       <div
-        className="text-white d-none d-md-block"
+        className="text-white "
         style={{
-          paddingLeft: "30px",
+          paddingLeft: "65px",
           paddingRight: "40px",
           marginTop: "30px",
         }}
