@@ -28,6 +28,7 @@ const LoginModal = (props) => {
       aria-labelledby="contained-modal-title-vcenter"
       centered
       animation
+      classname="bg-dark"
     >
       <form onSubmit={onSubmit}>
         <Modal.Header closeButton className=" text-center">

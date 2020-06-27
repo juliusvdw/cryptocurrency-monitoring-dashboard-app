@@ -19,9 +19,6 @@ import AuthContext from "./context/auth/authContext";
 //import pages
 import Home from "./components/pages/Home";
 import NewsPage from "./components/pages/NewsPage";
-import Education from "./components/pages/Education";
-import Exchanges from "./components/pages/Exchanges";
-import Connect from "./components/pages/Connect";
 import Chart from "./components/pages/Chart";
 import CoinPage from "./components/pages/CoinPage";
 import AllCoinsPage from "./components/pages/AllCoinsPage";
@@ -81,21 +78,7 @@ function App(props) {
                             path={"/news"}
                             render={(props) => <NewsPage {...props} />}
                           />
-                          <Route
-                            exact
-                            path={"/exchanges"}
-                            render={(props) => <Exchanges {...props} />}
-                          />
-                          <Route
-                            exact
-                            path={"/education"}
-                            render={(props) => <Education {...props} />}
-                          />
-                          <Route
-                            exact
-                            path={"/connect"}
-                            render={(props) => <Connect {...props} />}
-                          />
+
                           <Route
                             exact
                             path={"/coin/:id"}
