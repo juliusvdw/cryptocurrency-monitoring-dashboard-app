@@ -179,36 +179,6 @@ const SideNavBar = () => {
             News
           </StyledNavText>
         </StyledNavItem>
-
-        <StyledNavItem style={{}} eventKey="education">
-          <StyledNavIcon>
-            <i
-              className="fas fa-graduation-cap"
-              style={{ fontSize: "1.5rem" }}
-            />
-          </StyledNavIcon>
-          <StyledNavText
-            style={{
-              fontSize: "17.5px",
-              color: "white",
-            }}
-          >
-            Education
-          </StyledNavText>
-        </StyledNavItem>
-        <StyledNavItem style={{}} eventKey="connect">
-          <StyledNavIcon>
-            <i className="fas fa-comment-dots" style={{ fontSize: "1.5rem" }} />
-          </StyledNavIcon>
-          <StyledNavText
-            style={{
-              fontSize: "17.5px",
-              color: "white",
-            }}
-          >
-            Connect
-          </StyledNavText>
-        </StyledNavItem>
       </StyledNav>
     </SideNav>
   );
