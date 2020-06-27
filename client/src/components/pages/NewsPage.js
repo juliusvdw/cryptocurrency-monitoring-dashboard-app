@@ -34,7 +34,7 @@ const NewsPage = () => {
       <div
         className="text-white d-none d-md-block"
         style={{
-          paddingLeft: "30px",
+          paddingLeft: "85px",
           paddingRight: "40px",
           marginTop: "30px",
         }}

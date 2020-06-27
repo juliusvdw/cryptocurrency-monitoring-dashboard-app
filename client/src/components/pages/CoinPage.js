@@ -74,17 +74,17 @@ const CoinPage = (props) => {
       <div
         className="text-white "
         style={{
-          paddingLeft: "65px",
-          paddingRight: "40px",
+          paddingLeft: "30px",
+          paddingRight: "30px",
           marginTop: "30px",
         }}
       >
         <div className="row">
-          <div className="col-lg-6 offset-lg-1 d-flex flex-row">
+          <div className="col-lg-6 offset-md-1 d-flex flex-row">
             {currentCoin && (
               <>
                 <img
-                  className="img-fluid"
+                  className="img-fluid d-none d-md-block"
                   src={currentCoin && `${currentCoin.image}`}
                   style={{ maxHeight: "100px", maxWidth: "150px" }}
                 />
@@ -108,7 +108,7 @@ const CoinPage = (props) => {
               </>
             )}
           </div>
-          <div className="col-lg-5 d-flex flex-row">
+          <div className="col-lg-5 offset-md-1 d-flex flex-row">
             <div className=" mt-4">
               {user && (
                 <div
@@ -131,12 +131,12 @@ const CoinPage = (props) => {
           </div>
         </div>
         <div className="row text-white " style={{ marginTop: "30px" }}>
-          <div className="col-lg-9 offset-lg-1 ">
-            <CoinStats />
+          <div className="col-lg-9 col-md-8 col-sm-12 offset-md-1 ">
+            <CoinStats className="mx-auto" />
           </div>
         </div>
         <div className="row text-white " style={{ marginTop: "5px" }}>
-          <div className="col-lg-9 offset-lg-1 ">
+          <div className="col-lg-9 col-md-8  col-sm-12 offset-md-1 ">
             <CoinInfo />
           </div>
         </div>

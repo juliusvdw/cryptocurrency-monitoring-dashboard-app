@@ -17,7 +17,7 @@ const TopNav = ({ setRegisterModalShow, setLoginModalShow }) => {
         className="navbar-brand  text-white d-none d-md-flex"
         href="#"
         style={{
-          marginLeft: "100px",
+          marginLeft: "70px",
           fontWeight: "bold",
           height: "60px",
           fontSize: "32px",
@@ -29,7 +29,7 @@ const TopNav = ({ setRegisterModalShow, setLoginModalShow }) => {
       <a
         className="d-md-none mx-auto text-white"
         style={{
-          marginLeft: "70px",
+          marginLeft: "60px",
           fontWeight: "bold",
           fontSize: "30px",
           height: "60px",

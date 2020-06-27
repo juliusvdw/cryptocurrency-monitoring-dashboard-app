@@ -24,6 +24,7 @@ const CoinInfo = () => {
 
   return (
     <div className="jumbotron " style={{ backgroundColor: "#2D2D2D" }}>
+      <h5>Description</h5>
       {output}
     </div>
   );
