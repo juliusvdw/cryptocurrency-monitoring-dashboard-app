@@ -78,14 +78,14 @@ const WatchlistItem = (props) => {
             style={{ fontSize: "0.8rem", borderBottom: "1px solid #5f5f5f" }}
           >
             <span className="pb-1"> Daily low:</span>
-            <span className="ml-auto">{low}</span>
+            <span className="ml-auto">$ {low}</span>
           </div>
           <div
             className="row w-90 mx-auto"
             style={{ fontSize: "0.8rem", borderBottom: "1px solid #5f5f5f" }}
           >
             <span className="pt-1 pb-1"> Daily High:</span>
-            <span className="ml-auto pt-1">{high}</span>
+            <span className="ml-auto pt-1">$ {high}</span>
           </div>
           <div className="row w-90 mx-auto" style={{ fontSize: "0.8rem" }}>
             {" "}

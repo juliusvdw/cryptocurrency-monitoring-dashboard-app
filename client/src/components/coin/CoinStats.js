@@ -11,7 +11,17 @@ const CoinStats = () => {
 
   //Determine wheter the news or loading will be displayed based on the state of news
   if (!stats) {
-    output = <div>Loading</div>;
+    output = (
+      <div className="row " style={{ marginTop: "80px", height: "200px" }}>
+        <div
+          className="spinner-border text-primary mx-auto"
+          role="status"
+          style={{ width: "3.5rem", height: "3.5rem" }}
+        >
+          <span className="sr-only">Loading...</span>
+        </div>
+      </div>
+    );
   } else {
     const { market_data } = stats;
     const {
