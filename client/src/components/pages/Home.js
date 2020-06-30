@@ -78,6 +78,7 @@ const Home = () => {
           <span className="mb-4" style={{ fontSize: "1.5rem" }}>
             <strong>Watchlist</strong>
           </span>
+
           <WatchList />
         </div>
 
