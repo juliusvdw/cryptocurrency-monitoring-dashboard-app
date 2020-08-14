@@ -47,7 +47,7 @@ const AuthState = (props) => {
       console.log("logging in");
       const res = await axios({
         method: "post",
-        url: "/auth/login",
+        url: "https://cryptohawk-286407.nw.r.appspot.com//auth/login",
         data: formData,
       });
 
@@ -85,7 +85,7 @@ const AuthState = (props) => {
     try {
       const res = await axios({
         method: "post",
-        url: "/auth/register",
+        url: "https://cryptohawk-286407.nw.r.appspot.com//auth/register",
         data: formData,
       });
 
