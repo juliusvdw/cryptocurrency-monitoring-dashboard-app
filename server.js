@@ -31,7 +31,10 @@ passport.deserializeUser(User.deserializeUser());
 //connect to database
 connectDB();
 
+//Declare PORT var
+const PORT = process.env.PORT || 5000;
+
 //Mount routes
 app.use("/auth", auth);
 app.use("/watchlist", watchlist);
-app.listen(5000, console.log("express server started"));
+app.listen(PORT, console.log("express server started"));
