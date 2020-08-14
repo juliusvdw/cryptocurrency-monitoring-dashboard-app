@@ -24,7 +24,9 @@ const AuthState = (props) => {
   //Get logged in user
   const getUser = async () => {
     try {
-      const res = await axios.get("/auth/user");
+      const res = await axios.get(
+        "https://cryptohawk-286407.nw.r.appspot.com//auth/user"
+      );
 
       const data = res.data;
 
@@ -70,7 +72,9 @@ const AuthState = (props) => {
   //Create watchlist
   const createWatchlist = async () => {
     try {
-      await axios.post("/watchlist/create");
+      await axios.post(
+        "https://cryptohawk-286407.nw.r.appspot.com//watchlist/create"
+      );
     } catch (err) {
       console.log(err);
     }
@@ -108,7 +112,9 @@ const AuthState = (props) => {
   const userLogout = async () => {
     try {
       console.log("logging out");
-      await axios.get("/auth/logout");
+      await axios.get(
+        "https://cryptohawk-286407.nw.r.appspot.com//auth/logout"
+      );
       dispatch({ type: SET_USER, payload: null });
 
       window.location.reload();
