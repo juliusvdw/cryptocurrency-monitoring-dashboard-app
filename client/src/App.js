@@ -42,26 +42,9 @@ function App(props) {
                   setRegisterModalShow={setRegisterModalShow}
                 />
 
-                <div
-                  style={{ position: "relative", height: "calc(100vh - 75px)" }}
-                >
-                  <div className="d-flex h-100 w-100">
-                    <div id="sidenav-container" className="d-none d-md-flex">
-                      <SideNav />
-                    </div>
-
-                    <div
-                      className=" d-flex "
-                      id="body-container"
-                      style={{
-                        width: "100vw",
-                        background: "#1d1d1d",
-                      }}
-                    >
-                      <div
-                        id="body"
-                        className="d-flex w-100 h-100 text-white  "
-                      >
+                    
+                      <div id="body" >
+                        
                         <Switch>
                           <Route
                             exact
@@ -100,10 +83,7 @@ function App(props) {
                           onHide={() => setRegisterModalShow(false)}
                         />
                       </div>
-                    </div>
                   </div>
-                </div>
-              </div>
             </Router>
           </WatchlistState>
         </NewsState>
