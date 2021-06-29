@@ -111,7 +111,7 @@ const NavSearchBox = () => {
       <form onSubmit={onSubmit}>
         <input
           type="text"
-          className="form-control"
+          className="form-control search-input"
           value={searchValue}
           onChange={onChange}
           placeholder="Search cryptocurrencies"
