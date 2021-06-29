@@ -40,9 +40,17 @@ body::-webkit-scrollbar {
   transition: 0.15s;
 }
 
+.navbar-nav {
+  margin-left: 45px;
+}
+
 .nav-link {
   color: #021e69 !important;
-  padding-left: 45px !important;
+  font-size: 17px !important;
+}
+
+.nav-item {
+  margin-right: 45px ;
 }
 
 .navbar-brand {
@@ -93,4 +101,9 @@ body::-webkit-scrollbar {
   border: none !important;
   border-radius: 15px !important;
   height: 40px !important;
+}
+
+.active {
+  border-bottom: 2px solid #374Fc9 !important;
+  color: #374FC9 !important;
 }
