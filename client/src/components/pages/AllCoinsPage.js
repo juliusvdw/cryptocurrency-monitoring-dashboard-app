@@ -23,35 +23,10 @@ const AllCoinsPage = () => {
 
   return (
     <Fragment>
-      <div
-        className="container-fluid pl-4 pr-4  w-100 h-90"
-        id="home-container"
-        style={{ marginTop: "35px", overflowY: "auto" }}
-      >
-        <div
-          className="text-white d-none d-md-block"
-          style={{ paddingLeft: "60px", paddingRight: "40px" }}
-        >
-          <span
-            className=""
-            style={{ fontSize: "1.5rem", paddingLeft: "50px" }}
-          >
-            <strong>Top Coins by Market Cap</strong>
-          </span>
-        </div>
-        <div
-          className="d-none d-md-block"
-          style={{ paddingLeft: "130px", paddingRight: "80px" }}
-        >
-          <AllCoins />
-        </div>
-        <div className="d-block d-md-none" style={{ paddingLeft: "15px" }}>
-          <span className="" style={{ fontSize: "1.3rem" }}>
-            <strong>Top Coins by Mkt Cap</strong>
-          </span>
-          <AllCoins />
-        </div>
-      </div>
+      
+        
+        
+      
     </Fragment>
   );
 };
