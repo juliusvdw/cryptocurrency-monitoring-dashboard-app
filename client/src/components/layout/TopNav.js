@@ -22,7 +22,7 @@ const TopNav = ({ setRegisterModalShow, setLoginModalShow }) => {
   return (
     <>
     
-
+  
         <nav
           className="navbar navbar-expand-lg "
           style={navbarStyle}
@@ -30,7 +30,7 @@ const TopNav = ({ setRegisterModalShow, setLoginModalShow }) => {
           <a
             className="navbar-brand"
             href="#"
-            style={{ fontWeight: "bold", fontSize: "30px" }}
+            style={{ fontWeight: "bold", fontSize: "24px" }}
           >
             Cryptohawk
           </a>

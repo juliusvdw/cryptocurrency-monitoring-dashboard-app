@@ -1,6 +1,8 @@
 import React, { Fragment, useEffect, useContext, useState } from "react";
 
 import { Link } from "react-router-dom";
+import TradingViewWidget, { Themes, BarStyles } from "react-tradingview-widget";
+
 
 import WatchList from "../watchlist/Watchlist";
 import TopMovers from "../TopMovers";
@@ -34,9 +36,65 @@ const Home = () => {
 
   return (
     <>
-      
+      <div className = 'container-fluid '>
+
+        <div className = 'row home-top-cards-row px-4 py-4'>
+          <div className = 'col-lg-4'>
+            <div className = 'home-top-card' style = {topCardStyle}>
+
+            </div>
+
+          </div>
+          <div className = 'col-lg-4'>
+          <div className = 'home-top-card' style = {topCardStyle}>
+
+            </div>
+
+          </div>
+          <div className = 'col-lg-4'>
+          <div className = 'home-top-card' style = {topCardStyle}>
+
+            </div>
+
+          </div>
+          
+          
+        </div>
+
+        <div className = 'row home-botttom-chart-row'>
+          <div className = 'col-lg-12'>
+            <div className = 'home-bottom-card' style = {bottomCardStyle}>
+            <TradingViewWidget
+              symbol='BITSTAMP:BTCUSD'
+              theme={Themes.LIGHT}
+              locale="en"
+              style = {BarStyles.LINE}
+              autosize
+        />
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
+
+const topCardStyle = {
+  height: '350px',
+  backgroundColor: 'white',
+  borderRadius: '15px'
+}
+
+const bottomCardStyle = {
+  backgroundColor:'white',
+  borderRadius:'15px',
+  height:'350px',
+  marginRight: '25px',
+  marginLeft:'25px'
+
+}
+
+
+
 
 export default Home;
