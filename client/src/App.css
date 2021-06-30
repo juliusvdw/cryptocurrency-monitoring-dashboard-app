@@ -1,6 +1,9 @@
 .App {
 }
 
+body {
+  background-color: #EAEDF7;
+}
 
 #body {
   background-color: #EAEDF7;
@@ -38,6 +41,7 @@ body::-webkit-scrollbar {
 
 
 .navbar {
+  background-color: white !important;
   
 }
 .nav-btn {

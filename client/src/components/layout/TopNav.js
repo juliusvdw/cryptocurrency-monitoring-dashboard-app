@@ -49,7 +49,7 @@ const TopNav = ({ setRegisterModalShow, setLoginModalShow }) => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav  ">
               <li className="nav-item ">
-                <Link to="/" className="nav-link " href="#" onClick = {setActiveLink}>
+                <Link to="/" className="nav-link active" href="#" onClick = {setActiveLink}>
                   Dashboard{" "}
                 </Link>
               </li>
@@ -57,7 +57,7 @@ const TopNav = ({ setRegisterModalShow, setLoginModalShow }) => {
               <li className="nav-item">
                 <Link
                   to="/chart/default"
-                  className="nav-link active "
+                  className="nav-link  "
                   href="#"
                   onClick = {setActiveLink}
                 >
@@ -120,7 +120,6 @@ const btnStyle = {
 };
 
 const navbarStyle = {
-  backgroundColor: '#FFFFF'
   
 }
 export default TopNav;

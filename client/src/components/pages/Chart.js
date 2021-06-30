@@ -22,25 +22,24 @@ const Chart = (props) => {
 
   return (
     <>
-      <div className="d-none d-md-block w-100" style={{ paddingLeft: "65px" }}>
+      <div style = {containerStyle}>
         <TradingViewWidget
           symbol={coin}
-          theme={Themes.DARK}
+          theme={Themes.LIGHT}
           locale="en"
           autosize
         />
       </div>
 
-      <div className="d-md-none w-100">
-        <TradingViewWidget
-          symbol={coin}
-          theme={Themes.DARK}
-          locale="en"
-          autosize
-        />
-      </div>
+      
     </>
   );
 };
+
+const containerStyle = {
+  height:'calc(100vh - 78px)',
+  width:'97%',
+  margin: ' 15px auto'
+}
 
 export default Chart;
