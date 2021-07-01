@@ -33,7 +33,7 @@ const Watchlist = () => {
       let symbol = cryptos[index].symbol;
       let image = cryptos[index].image;
       return (
-        <div className="col-lg-3 col-md-5">
+        <div className="w-100">
           <WatchListItem
             coinId={coin.id}
             coinData={{ price, high, low, percentChange, symbol, image }}
@@ -42,9 +42,10 @@ const Watchlist = () => {
       );
     });
 
+  // Return Watchlist 
     return (
       <Fragment>
-        <div className="row " style={{ marginTop: "30px" }}>
+        <div >
           {watchList}
         </div>
       </Fragment>
