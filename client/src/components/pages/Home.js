@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useContext, useState } from "react";
 
 import { Link } from "react-router-dom";
-import TradingViewWidget, { Themes, BarStyles } from "react-tradingview-widget";
+import TradingViewWidget, { Themes, BarStyles, } from "react-tradingview-widget";
 
 
 import WatchList from "../watchlist/Watchlist";
@@ -38,19 +38,14 @@ const Home = () => {
     <>
       <div className = 'container-fluid '>
 
-        <div className = 'row home-top-cards-row px-4 py-4'>
-          <div className = 'col-lg-4'>
+        <div className = 'row home-top-cards-row px-4 py-3'>
+          <div className = 'col-lg-8'>
             <div className = 'home-top-card' style = {topCardStyle}>
-
+              <WatchList />
             </div>
 
           </div>
-          <div className = 'col-lg-4'>
-          <div className = 'home-top-card' style = {topCardStyle}>
-
-            </div>
-
-          </div>
+         
           <div className = 'col-lg-4'>
           <div className = 'home-top-card' style = {topCardStyle}>
 
@@ -82,13 +77,15 @@ const Home = () => {
 const topCardStyle = {
   height: '350px',
   backgroundColor: 'white',
-  borderRadius: '15px'
+  borderRadius: '15px',
+  padding: '20px',
+  overflowY : 'auto'
 }
 
 const bottomCardStyle = {
   backgroundColor:'white',
   borderRadius:'15px',
-  height:'350px',
+  height:'370px',
   marginRight: '25px',
   marginLeft:'25px'
 
