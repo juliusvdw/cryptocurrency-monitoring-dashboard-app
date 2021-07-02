@@ -121,7 +121,7 @@ const NavSearchBox = () => {
 
       <div
         id="auto-suggest"
-        className=" bg-light "
+        className="  "
         style={{
           position: "absolute",
           display: `${showSuggestions}`,
@@ -132,6 +132,7 @@ const NavSearchBox = () => {
           borderRadius : '15px',
           marginTop:'7px',
           border : '1px solid #F0F0F0',
+          backgroundColor : 'white'
           
         }}
       >
