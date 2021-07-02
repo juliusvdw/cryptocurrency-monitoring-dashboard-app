@@ -57,6 +57,10 @@ body::-webkit-scrollbar {
   font-size: 16px !important;
 }
 
+.nav-link:hover {
+  color: #374FC9 !important;
+}
+
 .nav-item {
   margin-right: 45px ;
 }
@@ -86,10 +90,9 @@ body::-webkit-scrollbar {
   transition: visibility 0s 0.22s, opacity 0.22s linear;
 }
 
-#watchlist-card:hover .card-btn {
-  visibility: visible !important;
-  transition: opacity 0.23s linear;
-  opacity: 1;
+.watchlist-item-container:hover {
+  cursor: pointer;
+  background-color: #F9F9F9;
 }
 
 .watchlist-add-btn {
