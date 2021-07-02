@@ -121,14 +121,18 @@ const NavSearchBox = () => {
 
       <div
         id="auto-suggest"
-        className="bg-light  "
+        className=" bg-light "
         style={{
           position: "absolute",
           display: `${showSuggestions}`,
           zIndex: "100",
-          width: "30%",
+          width: "27%",
           maxHeight: "250px",
           overflowY: "auto",
+          borderRadius : '15px',
+          marginTop:'7px',
+          border : '1px solid #F0F0F0',
+          
         }}
       >
         <ul className=" py-0 px-0 ">{suggestionsList}</ul>
