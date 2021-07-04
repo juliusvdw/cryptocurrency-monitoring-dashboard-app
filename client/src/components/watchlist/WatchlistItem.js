@@ -37,7 +37,7 @@ const WatchlistItem = (props) => {
     <>
               <div className = 'watchlist-item-container' style = {itemContainerStyle}>
                 <div className = 'coin-id-container' style = {coinIdStyle}>
-                <span className = 'watchlist-img pl-3'> <img src = {`${image}`} style = {imageStyle}></img> </span> <span className = 'pl-3' >{id}</span>
+                <span className = 'watchlist-img pl-3'> <img src = {`${image}`} style = {imageStyle}></img> </span> <span className = 'pl-3' >{id}</span> <span style = {symbolStyle}><strong>{symbol.toUpperCase()}</strong></span>
                 </div>
 
                 <div className = 'coin-price-container' style = {infoStyle}>
@@ -75,7 +75,7 @@ const imageStyle = {
 
 const coinIdStyle = {
   fontWeight:'450',
-  flex: '1'
+  flex: '2'
 }
 
 const infoStyle = {
@@ -84,7 +84,10 @@ const infoStyle = {
   flex : '1'
 }
 
-const percentStyle = {
+const symbolStyle = {
+  fontSize:'12px',
+  color:'#A5A5A5',
+  marginLeft :'10px'
 }
 
 export default WatchlistItem;
