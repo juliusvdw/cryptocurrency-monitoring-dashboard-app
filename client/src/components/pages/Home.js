@@ -49,11 +49,13 @@ const Home = () => {
           <div className = 'col-lg-4'>
           <div className = 'home-top-card' style = {topCardStyle}>
 
-            </div>
-
+            
+            <TopMovers />
           </div>
           
           
+        </div>
+
         </div>
 
         <div className = 'row home-botttom-chart-row'>
