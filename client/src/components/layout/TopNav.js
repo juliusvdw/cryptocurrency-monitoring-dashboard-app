@@ -9,6 +9,8 @@ const TopNav = ({ setRegisterModalShow, setLoginModalShow }) => {
   const authContext = useContext(AuthContext);
   const { user, userLogout } = authContext;
 
+
+  //Set active link on click
   const setActiveLink = (e) => {
     const navLinks = document.querySelectorAll('.nav-link');
 
@@ -30,9 +32,9 @@ const TopNav = ({ setRegisterModalShow, setLoginModalShow }) => {
           <a
             className="navbar-brand"
             href="#"
-            style={{ fontWeight: "bold", fontSize: "24px" }}
+            
           >
-            Cryptohawk
+            <img src = '/cryptologo.png' style={{ height:'45px', width:'45px', fontSize: "24px" }} /> 
           </a>
           <button
             className="navbar-toggler"
