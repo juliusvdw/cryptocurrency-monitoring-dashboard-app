@@ -38,13 +38,13 @@ const Watchlist = () => {
         <div className="topmovers-item" style = {itemStyle}> 
          
             <div className="mt-2" style = {idStyle}>
-              <span className="pt-2 "> <img  src = {`${coin.image}`} style = {imageStyle} /></span>
+              <span className="pt-2 pl-2"> <img  src = {`${coin.image}`} style = {imageStyle} /></span>
               <span className=" pl-3 pt-2 ">{coin.id}</span>
               <span style = {symbolStyle}>
                 <span><strong>{coin.symbol.toUpperCase()}</strong> </span>
               </span>
             </div>
-            <span className="pt-2" style={percentStyle}>
+            <span className="pt-2 " style={percentStyle}>
               {coin.percentChange.toString().slice(0, 5)}%
             </span>
           
@@ -53,6 +53,7 @@ const Watchlist = () => {
     });
     return (
       <div >
+        <h6 style = {headingStyle} className = 'pl-2'>Top Movers</h6>
         {outputList}
       </div>
     );
@@ -93,7 +94,7 @@ const symbolStyle = {
 const percentStyle = {
   color:'#4e9d66',
   flex:'1',
-  textAlign:'center',
+  textAlign:'right',
   fontWeight:'bold',
   fontSize:'14px'
 }
@@ -101,6 +102,11 @@ const percentStyle = {
 const imageStyle = {
   height:'30px',
   width :'30px'
+}
+
+const headingStyle = {
+  color:'rgb(155, 145, 145)',
+  marginBottom : '0px'
 }
 
 export default Watchlist;
