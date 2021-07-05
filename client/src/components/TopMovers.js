@@ -35,7 +35,7 @@ const Watchlist = () => {
     //Map the finalList and output the formatted data
     const outputList = finalList.map((coin) => {
       return (
-        <div className="topmovers-item" style = {itemStyle}> 
+        <div className="topmovers-item-container" style = {itemStyle}> 
          
             <div className="mt-2" style = {idStyle}>
               <span className="pt-2 pl-2"> <img  src = {`${coin.image}`} style = {imageStyle} /></span>

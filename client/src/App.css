@@ -95,6 +95,11 @@ body::-webkit-scrollbar {
   background-color: #F9F9F9;
 }
 
+.topmovers-item-container:hover {
+  cursor: pointer;
+  background-color: #F9F9F9;
+}
+
 .watchlist-add-btn {
   visibility: hidden;
   opacity: 0;
