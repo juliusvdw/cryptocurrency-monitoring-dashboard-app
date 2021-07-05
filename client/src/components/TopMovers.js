@@ -22,43 +22,37 @@ const Watchlist = () => {
 
     //Push the top 8 movers to the topMoversList
     for (let i = 0; i < 8; i++) {
+
       let id = topMoversList[i].id;
       id = id.replace(id.charAt(0), id.charAt(0).toUpperCase());
       const symbol = topMoversList[i].symbol;
       const percentChange = topMoversList[i].price_change_percentage_24h;
+      const image = topMoversList[i].image;
 
-      finalList.push({ id, percentChange, symbol });
+      finalList.push({ id, percentChange, symbol, image });
     }
 
     //Map the finalList and output the formatted data
     const outputList = finalList.map((coin) => {
       return (
-        <div className="col-lg-3 col-md-6 ">
-          <div
-            className="card d-flex flex-row  mb-2 pr-4 pl-4 movers-card "
-            style={{
-              fontSize: "1.2rem",
-              fontWeight: "bold",
-              minHeight: "45px",
-              borderRadius: "5px",
-              backgroundColor: "#2D2D2D",
-            }}
-          >
-            <div className="mt-2">
-              <span className="pt-2 ">{coin.id}</span>
-              <p style={{ fontSize: "0.65rem", fontWeight: "normal" }}>
-                {coin.symbol.toUpperCase()}
-              </p>
+        <div className="topmovers-item" style = {itemStyle}> 
+         
+            <div className="mt-2" style = {idStyle}>
+              <span className="pt-2 "> <img  src = {`${coin.image}`} style = {imageStyle} /></span>
+              <span className=" pl-3 pt-2 ">{coin.id}</span>
+              <span style = {symbolStyle}>
+                <span><strong>{coin.symbol.toUpperCase()}</strong> </span>
+              </span>
             </div>
-            <span className="ml-auto pt-2" style={{ color: "lightgreen" }}>
+            <span className="pt-2" style={percentStyle}>
               {coin.percentChange.toString().slice(0, 5)}%
             </span>
-          </div>
+          
         </div>
       );
     });
     return (
-      <div className="row" style={{ marginTop: "30px" }}>
+      <div >
         {outputList}
       </div>
     );
@@ -76,5 +70,37 @@ const Watchlist = () => {
     );
   }
 };
+
+const itemStyle = {
+  display: 'flex',
+  height: '80px',
+  borderBottom: '1px solid #F0F0F0',
+  alignItems:'center',
+  color: '#021E69'
+}
+
+const idStyle = {
+  flex:'1',
+  fontWeight: '450'
+}
+
+const symbolStyle = {
+  fontSize:'12px',
+  marginLeft:'10px',
+  color:'#A5A5A5'
+}
+
+const percentStyle = {
+  color:'#4e9d66',
+  flex:'1',
+  textAlign:'center',
+  fontWeight:'bold',
+  fontSize:'14px'
+}
+
+const imageStyle = {
+  height:'30px',
+  width :'30px'
+}
 
 export default Watchlist;
