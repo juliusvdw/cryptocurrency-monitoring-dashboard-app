@@ -123,3 +123,7 @@ body::-webkit-scrollbar {
   border-bottom: 2px solid #374Fc9 !important;
   color: #374FC9 !important;
 }
+
+.refresh-icon:hover {
+  cursor: pointer;
+}
