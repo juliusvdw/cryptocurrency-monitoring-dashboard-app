@@ -20,9 +20,10 @@ const Watchlist = () => {
     cryptos,
     loading,
     getWatchlist,
+    setCryptos,
   } = watchlistContext;
 
-  if (!loading && cryptos.length > 1 && watchlist !== undefined) {
+  if (loading != 'watchlist' && cryptos.length > 1 && watchlist !== undefined) {
     //Map watchlist state to create watchlist list with watchlistItems
     const watchList = watchlist.map((coin) => {
       //find index of this coin we will be accessing
@@ -52,7 +53,7 @@ const Watchlist = () => {
           <div className = 'd-flex'>
             <h6 className = 'pl-3' style = {headingStyle}>Watchlist</h6>
             <span className = 'text-right w-100'>
-              <ArrowRepeat style = {refreshStyle} className = 'refresh-icon' /> </span>
+              <ArrowRepeat style = {refreshStyle} className = 'refresh-icon' onClick = {() => setCryptos('watchlist')}/> </span>
              
               </div>
 

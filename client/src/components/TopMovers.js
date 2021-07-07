@@ -1,6 +1,9 @@
 import React, { Fragment, useContext, useEffect } from "react";
+import {ArrowRepeat} from 'react-bootstrap-icons';
+
 
 import WatchlistContext from "../context/watchlist/watchlistContext";
+
 
 const Watchlist = () => {
   const watchlistContext = useContext(WatchlistContext);
@@ -10,10 +13,11 @@ const Watchlist = () => {
     getCoin,
     cryptos,
     loading,
+    setCryptos
   } = watchlistContext;
 
   //Create the top movers list by sorting cryptos by price change percentage.
-  if (!loading && cryptos.length > 1) {
+  if (loading != 'topmovers' && cryptos.length > 1) {
     const topMoversList = cryptos.sort(
       (a, b) => b.price_change_percentage_24h - a.price_change_percentage_24h
     );
@@ -53,7 +57,11 @@ const Watchlist = () => {
     });
     return (
       <div >
-        <h6 style = {headingStyle} className = 'pl-2'>Top Movers</h6>
+        <div className = 'd-flex'>
+           <h6 style = {headingStyle} className = 'pl-2'>Top Movers</h6>
+            <span className = 'text-right w-100'><ArrowRepeat style = {refreshStyle} className = 'refresh-icon' onClick = {() => setCryptos('topmovers')}/> </span>
+
+        </div>
         {outputList}
       </div>
     );
@@ -81,7 +89,7 @@ const itemStyle = {
 }
 
 const idStyle = {
-  flex:'1',
+  flex:'2',
   fontWeight: '450'
 }
 
@@ -106,7 +114,15 @@ const imageStyle = {
 
 const headingStyle = {
   color:'rgb(155, 145, 145)',
-  marginBottom : '0px'
+  marginBottom : '0px',
+  minWidth:'250px',
+}
+
+const refreshStyle = {
+  marginLeft:'auto',
+  color:'#374FC9',
+  fontSize:'20px',
+  
 }
 
 export default Watchlist;
