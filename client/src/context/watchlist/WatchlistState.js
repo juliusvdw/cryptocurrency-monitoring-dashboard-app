@@ -58,8 +58,8 @@ const WatchlistState = (props) => {
     }
   };
 
-  const setCryptos = async () => {
-    setLoading();
+  const setCryptos = async (loadingID) => {
+    setLoading(loadingID);
     try {
       const res = await axios.get(
         `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=250`
@@ -107,8 +107,8 @@ const WatchlistState = (props) => {
     }
   };
 
-  const setLoading = () => {
-    dispatch({ type: "SET_LOADING" });
+  const setLoading = (loadingID) => {
+    dispatch({ type: "SET_LOADING",payload:loadingID });
   };
 
   const clearLoading = () => {
