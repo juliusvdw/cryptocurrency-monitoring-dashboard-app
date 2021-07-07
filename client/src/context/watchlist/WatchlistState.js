@@ -70,8 +70,10 @@ const WatchlistState = (props) => {
     } catch (err) {
       console.log(err);
     }
-
-    clearLoading();
+      setTimeout(() => {
+        clearLoading()
+      }, 1000);
+    ;
   };
 
   const watchlistAdd = async (id) => {
