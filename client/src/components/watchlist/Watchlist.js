@@ -1,6 +1,9 @@
 import React, { Fragment, useContext, useEffect } from "react";
+import {ArrowRepeat} from 'react-bootstrap-icons';
+
 
 import WatchListItem from "./WatchlistItem";
+
 
 import WatchlistContext from "../../context/watchlist/watchlistContext";
 import AuthContext from "../../context/auth/authContext";
@@ -46,7 +49,13 @@ const Watchlist = () => {
     return (
       <Fragment>
         <div >
-          <h6 className = 'pl-3' style = {headingStyle}>Watchlist</h6>
+          <div className = 'd-flex'>
+            <h6 className = 'pl-3' style = {headingStyle}>Watchlist</h6>
+            <span className = 'text-right w-100'>
+              <ArrowRepeat style = {refreshStyle} className = 'refresh-icon' /> </span>
+             
+              </div>
+
           {watchList}
         </div>
       </Fragment>
@@ -69,6 +78,13 @@ const Watchlist = () => {
 const headingStyle = {
   color:'rgb(155, 145, 145)',
   marginBottom : '0px'
+}
+
+
+const refreshStyle = {
+  marginLeft:'auto',
+  color:'#374FC9',
+  fontSize:'20px'
 }
 
 

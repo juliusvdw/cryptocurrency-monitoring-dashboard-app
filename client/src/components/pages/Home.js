@@ -3,6 +3,8 @@ import React, { Fragment, useEffect, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import TradingViewWidget, { Themes, BarStyles, } from "react-tradingview-widget";
 
+import {ArrowRepeat} from 'react-bootstrap-icons';
+
 
 import WatchList from "../watchlist/Watchlist";
 import TopMovers from "../TopMovers";
@@ -41,6 +43,7 @@ const Home = () => {
         <div className = 'row home-top-cards-row px-4 py-3'>
           <div className = 'col-lg-8'>
             <div className = 'home-top-card' style = {topCardStyle}>
+              
               <WatchList />
             </div>
 
@@ -91,6 +94,10 @@ const bottomCardStyle = {
   marginRight: '25px',
   marginLeft:'25px'
 
+}
+
+const refreshStyle = {
+  
 }
 
 
