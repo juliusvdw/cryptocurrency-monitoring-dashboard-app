@@ -3,7 +3,6 @@ import React, { Fragment, useEffect, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import TradingViewWidget, { Themes, BarStyles, } from "react-tradingview-widget";
 
-import {ArrowRepeat} from 'react-bootstrap-icons';
 
 
 import WatchList from "../watchlist/Watchlist";
@@ -13,6 +12,7 @@ import News from "../news/News";
 import WatchlistContext from "../../context/watchlist/watchlistContext";
 import NewsContext from "../../context/news/newsContext";
 import AuthContext from "../../context/auth/authContext";
+import ChartContext from "../../context/chartwidget/chartContext";
 
 const Home = () => {
   const [watchlistAlert, setWatchlistAlert] = useState("block");
@@ -20,10 +20,12 @@ const Home = () => {
   const watchlistContext = useContext(WatchlistContext);
   const newsContext = useContext(NewsContext);
   const authContext = useContext(AuthContext);
+  const chartContext = useContext(ChartContext);
 
   const { setCryptos, loading, getWatchlist } = watchlistContext;
   const { getNews, newsLoading } = newsContext;
   const { getUser, user } = authContext;
+  const { homeChart} = chartContext;
 
   //fetch all crypto prices and add to state with useEffect
   //Fetch user on page load
@@ -65,7 +67,7 @@ const Home = () => {
           <div className = 'col-lg-12'>
             <div className = 'home-bottom-card' style = {bottomCardStyle}>
             <TradingViewWidget
-              symbol='BITSTAMP:BTCUSD'
+              symbol={`${homeChart}`}
               theme={Themes.LIGHT}
               locale="en"
               style = {BarStyles.LINE}
@@ -96,9 +98,6 @@ const bottomCardStyle = {
 
 }
 
-const refreshStyle = {
-  
-}
 
 
 
