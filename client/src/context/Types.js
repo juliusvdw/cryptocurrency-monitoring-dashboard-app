@@ -10,3 +10,4 @@ export const SET_LOADING = "SET_LOADING";
 export const CLEAR_LOADING = "CLEAR_LOADING";
 export const SET_NEWS = "SET_NEWS";
 export const SET_USER = "SET_USER";
+export const SET_HOME_CHART = 'SET_HOME_CHART';
