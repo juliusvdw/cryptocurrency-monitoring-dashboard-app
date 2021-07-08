@@ -1,6 +1,9 @@
 import React, { useReducer } from "react";
 import { useHistory, Redirect } from "react-router-dom";
 
+import ChartReducer from './chartReducer'
+import ChartContext from './chartContext'
+
 
 
 import { SET_HOME_CHART} from "../Types";
@@ -10,19 +13,23 @@ const ChartState = (props) => {
     homeChart:'btcusd'
   };
 
-  const [state, dispatch] = useReducer(AuthReducer, initialState);
+  const [state, dispatch] = useReducer(ChartReducer, initialState);
 
-  
+  const setHomeChart =  (chartID) => {
+      dispatch({type:SET_HOME_CHART,payload:chartID })
+      console.log('wohoo')
+  }
 
   return (
-    <ChartState.Provider
+    <ChartContext.Provider
       value={{
         homeChart:state.homeChart,
+        setHomeChart,
       }}
     >
       {props.children}
-    </ChartState.Provider>
+    </ChartContext.Provider>
   );
 };
 
-export default AuthState;
+export default ChartState;
