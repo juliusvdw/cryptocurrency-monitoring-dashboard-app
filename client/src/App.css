@@ -14,8 +14,8 @@ body {
   margin-left: 0px;
 }
 
-#home-container::-webkit-scrollbar {
-  display: none;
+.home-top-card::-webkit-scrollbar {
+  display: none ;
 }
 
 body::-webkit-scrollbar {
