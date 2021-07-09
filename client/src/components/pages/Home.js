@@ -70,7 +70,7 @@ const Home = () => {
               symbol={`${homeChart}`}
               theme={Themes.LIGHT}
               locale="en"
-              style = {BarStyles.LINE}
+              style = {BarStyles.AREA}
               autosize
         />
             </div>
