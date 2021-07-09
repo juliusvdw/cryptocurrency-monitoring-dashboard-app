@@ -113,7 +113,7 @@ const imageStyle = {
 }
 
 const headingStyle = {
-  color:'rgb(155, 145, 145)',
+  color:'#021E69',
   marginBottom : '0px',
   minWidth:'250px',
 }
