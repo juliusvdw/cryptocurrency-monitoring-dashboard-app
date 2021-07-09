@@ -12,6 +12,7 @@ import WatchlistState from "./context/watchlist/WatchlistState";
 import NewsState from "./context/news/NewsState";
 import AuthState from "./context/auth/AuthState";
 import CoinFeedState from "./context/coinFeed/CoinFeedState";
+import ChartState from "./context/chartwidget/ChartState";
 
 //import Context
 import AuthContext from "./context/auth/authContext";
@@ -35,6 +36,7 @@ function App(props) {
       <CoinFeedState>
         <NewsState>
           <WatchlistState>
+           <ChartState>
             <Router>
               <div className="App">
                 <TopNav
@@ -85,7 +87,8 @@ function App(props) {
                       </div>
                   </div>
             </Router>
-          </WatchlistState>
+              </ChartState>
+             </WatchlistState>
         </NewsState>
       </CoinFeedState>
     </AuthState>
