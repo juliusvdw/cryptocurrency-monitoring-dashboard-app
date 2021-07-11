@@ -53,6 +53,7 @@ const Watchlist = () => {
           <div className = 'd-flex'>
             <h6 className = 'pl-3' style = {headingStyle}>Watchlist</h6>
             <span className = 'text-right w-100'>
+            { !user && <div className = 'alert-success ' style = {alertStyle}>Sign in to modify watchlist</div> }
               <ArrowRepeat style = {refreshStyle} className = 'refresh-icon' onClick = {() => setCryptos('watchlist')}/> </span>
              
               </div>
@@ -87,6 +88,27 @@ const refreshStyle = {
   color:'#374FC9',
   fontSize:'20px'
 }
+
+const alertStyle = {
+  margin: '0px auto',
+  textAlign: 'left',
+  height: '35px',
+  position: 'absolute',
+  zIndex: '999',
+  marginLeft: '40px',
+  borderRadius: '12px',
+  padding: '10px',
+  fontSize : '12px',
+  marginTop:'-10px',
+  width: '250px',
+  display:'flex',
+  alignItems:'center',
+  justifyContent:'center',
+  fontWeight:'bold',
+  backgroundColor:'#EAEDF7 !important',
+  opacity:'0.8'
+}
+
 
 
 export default Watchlist;
