@@ -1,5 +1,5 @@
 import React, { Fragment, useContext, useEffect } from "react";
-import {ArrowRepeat} from 'react-bootstrap-icons';
+import {ArrowRepeat, XLg} from 'react-bootstrap-icons';
 
 
 import WatchListItem from "./WatchlistItem";
@@ -46,6 +46,14 @@ const Watchlist = () => {
       );
     });
 
+    //Hide alert function onclick
+    const hideAlert = () => {
+      //select alert
+      const alert = document.querySelector('#alert');
+
+      alert.style.display = 'none'
+    }
+
   // Return Watchlist 
     return (
       <Fragment>
@@ -53,7 +61,7 @@ const Watchlist = () => {
           <div className = 'd-flex'>
             <h6 className = 'pl-3' style = {headingStyle}>Watchlist</h6>
             <span className = 'text-right w-100'>
-            { !user && <div className = 'alert-success ' style = {alertStyle}>Sign in to modify watchlist</div> }
+            { !user && <div className = 'alert-success ' style = {alertStyle} id = 'alert'>Sign in to modify watchlist <XLg style = {exitStyle} id = 'alert-exit'onClick = {() => hideAlert()}/></div> }
               <ArrowRepeat style = {refreshStyle} className = 'refresh-icon' onClick = {() => setCryptos('watchlist')}/> </span>
              
               </div>
@@ -92,21 +100,25 @@ const refreshStyle = {
 const alertStyle = {
   margin: '0px auto',
   textAlign: 'left',
-  height: '35px',
+  height: '40px',
   position: 'absolute',
   zIndex: '999',
   marginLeft: '40px',
   borderRadius: '12px',
-  padding: '10px',
+  padding: '15px',
   fontSize : '12px',
   marginTop:'-10px',
   width: '250px',
   display:'flex',
   alignItems:'center',
-  justifyContent:'center',
   fontWeight:'bold',
   backgroundColor:'#EAEDF7 !important',
   opacity:'0.8'
+}
+
+const exitStyle = {
+ position: 'absolute',
+ right:'10px'
 }
 
 

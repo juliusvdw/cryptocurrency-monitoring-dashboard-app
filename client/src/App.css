@@ -127,3 +127,7 @@ body::-webkit-scrollbar {
 .refresh-icon:hover {
   cursor: pointer;
 }
+
+#alert-exit:hover {
+  cursor: pointer;
+}
