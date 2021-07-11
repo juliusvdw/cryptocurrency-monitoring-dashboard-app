@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect } from "react";
+import React, { Fragment, useContext, useEffect,useState } from "react";
 import {ArrowRepeat, XLg} from 'react-bootstrap-icons';
 
 
@@ -7,8 +7,16 @@ import WatchListItem from "./WatchlistItem";
 
 import WatchlistContext from "../../context/watchlist/watchlistContext";
 import AuthContext from "../../context/auth/authContext";
+import { session } from "passport";
 
 const Watchlist = () => {
+
+
+  //Define session storage
+  const sessionStorage = window.sessionStorage;
+
+
+  //Bring in context
   const watchlistContext = useContext(WatchlistContext);
   const authContext = useContext(AuthContext);
 
@@ -23,6 +31,23 @@ const Watchlist = () => {
     setCryptos,
   } = watchlistContext;
 
+    //Set session storage firstload to false after 10 secs
+    setTimeout(() => {
+      sessionStorage.setItem('firstload', 'false')
+
+    },10000)
+
+     let alertClass;
+
+  //Determine alert class based on sessionstorage firstload
+  if (sessionStorage.getItem('firstload' ) === 'false') {
+    alertClass = 'd-none'
+  }else {
+    alertClass = 'alert-success'
+  }
+  
+
+  //Create watchlist by mapping through watchlist state
   if (loading != 'watchlist' && cryptos.length > 1 && watchlist !== undefined) {
     //Map watchlist state to create watchlist list with watchlistItems
     const watchList = watchlist.map((coin) => {
@@ -48,11 +73,14 @@ const Watchlist = () => {
 
     //Hide alert function onclick
     const hideAlert = () => {
-      //select alert
+      //select alert box and hide display
       const alert = document.querySelector('#alert');
 
-      alert.style.display = 'none'
+      alert.style.display='none';
+      
     }
+
+    
 
   // Return Watchlist 
     return (
@@ -60,8 +88,15 @@ const Watchlist = () => {
         <div >
           <div className = 'd-flex'>
             <h6 className = 'pl-3' style = {headingStyle}>Watchlist</h6>
+
+               <span id = 'alert-span'>
+
+                { !user && <div className = {alertClass} style = {alertStyle} id = 'alert'>Sign in to modify watchlist <XLg style = {exitStyle} id = 'alert-exit'onClick = {() => hideAlert()}/></div> }
+                </span>
+
+
             <span className = 'text-right w-100'>
-            { !user && <div className = 'alert-success ' style = {alertStyle} id = 'alert'>Sign in to modify watchlist <XLg style = {exitStyle} id = 'alert-exit'onClick = {() => hideAlert()}/></div> }
+            
               <ArrowRepeat style = {refreshStyle} className = 'refresh-icon' onClick = {() => setCryptos('watchlist')}/> </span>
              
               </div>
