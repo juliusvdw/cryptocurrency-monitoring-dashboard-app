@@ -17,35 +17,8 @@ const AllCoins = () => {
 
     return (
       <>
-        <div
-          className="row"
-          style={{
-            borderBottom: "1px solid #555555",
-            height: "60px",
-            marginTop: "30px",
-          }}
-        >
-          <div className="col-lg-3 col-md-4">
-            <p className="pt-4 pl-3">Coin</p>
-          </div>
-
-          <div className="col-lg-2 col-md-3 d-none d-md-block">
-            <p className="pt-4">Price</p>
-          </div>
-
-          <div className="col-lg-1 col-md-2 d-none d-md-block">
-            <p className="pt-4">24h</p>
-          </div>
-
-          <div className="col-lg-3 col-md-2 d-none d-lg-block">
-            <p className="pt-4"> Volume</p>
-          </div>
-
-          <div className="col-lg-3 col-md-2 d-none d-lg-block">
-            <p className="pt-4">Mkt Cap</p>
-          </div>
-        </div>
-        <div className="row">{allCoinsList}</div>{" "}
+        
+        {allCoinsList}
       </>
     );
   } else {
