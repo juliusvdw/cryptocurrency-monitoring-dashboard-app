@@ -62,7 +62,7 @@ const Watchlist = () => {
       let symbol = cryptos[index].symbol;
       let image = cryptos[index].image;
       return (
-        <div className="w-100 mt-2">
+        <div className="w-100 ">
           <WatchListItem
             coinId={coin.id}
             coinData={{ price, high, low, percentChange, symbol, image }}
@@ -138,7 +138,7 @@ const alertStyle = {
   height: '40px',
   position: 'absolute',
   zIndex: '999',
-  marginLeft: '40px',
+  right: '100px',
   borderRadius: '12px',
   padding: '15px',
   fontSize : '12px',
