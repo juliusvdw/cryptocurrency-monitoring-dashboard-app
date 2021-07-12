@@ -22,13 +22,28 @@ const AllCoinsPage = () => {
   }, []);
 
   return (
-    <Fragment>
-      
-        
-        
-      
-    </Fragment>
+    <>
+
+    <div className = 'coins-container my-3' style = {containerStyle}>
+
+      <AllCoins />
+
+    </div>
+
+    </>
   );
 };
+
+const containerStyle = {
+  borderRadius: '15px',
+  backgroundColor:'#FFFFFF',
+  width: '95%',
+  margin:'0 auto',
+  paddingLeft:'120px',
+  paddingRight:'120px',
+  paddingTop:'50px',
+  height:'87vh',
+  overflowY:'auto'
+}
 
 export default AllCoinsPage;
