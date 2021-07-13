@@ -25,67 +25,105 @@ const RegisterModal = (props) => {
   return (
     <Modal
       {...props}
-      size="md"
+      size = 'md'
       aria-labelledby="contained-modal-title-vcenter"
       centered
       animation
+      
     >
       <form onSubmit={onSubmit}>
-        <Modal.Header closeButton className=" ">
-          <Modal.Title id="contained-modal-title-vcenter">
-            <h2>Create Account</h2>
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <h5 className="mt-1 ">Username</h5>
+        
+        <Modal.Body style = {modalBodyStyle}>
+
+          <div style = {headerStyle} className = ''>
+            <img src = '/cryptologo.png' style = {logoStyle}/>
+            <h4 className = 'mt-3'>Create an account</h4>
+            <p>to continue to <strong>Cryptohawk</strong></p>
+          </div>
+          
           <input
             style={inputStyle}
             type="text"
             placeholder="Username"
-            className="form-control"
+            className="form-control mb-3 w-90 mx-auto modal-input"
             value={username}
             name="username"
             onChange={(e) => setUsername(e.target.value)}
           />
-          <h5 className="mt-4 ">Password </h5>
           <input
             style={inputStyle}
             type="password"
-            placeholder="Password..."
-            className="form-control"
+            placeholder="Password"
+            className="form-control mb-3 w-90 mx-auto  modal-input"
             value={password}
             name="password"
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <h5 className="mt-4 ">Confirm Password </h5>
           <input
             style={inputStyle}
             type="password"
-            placeholder="Password..."
-            className="form-control"
+            placeholder="Confirm Password"
+            className="form-control   w-90 mx-auto modal-input"
             value={confirmPassword}
             name="confirmPassword"
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
+
+          <div className = 'text-center mt-3' style = {alreadyStyle}>
+          <p>Already have an account? <span style = {signInStyle}>Sign In</span></p>
+          </div>
+
+          <div className = 'text-right pr-2 mt-4'>
+          <button type  = ' submit' style = {btnStyle} className = 'btn btn-outline-primary'>Create Account</button>
+
+        </div>
         </Modal.Body>
-        <Modal.Footer>
-          <Button
-            type="submit"
-            className="form-control w-100"
-            style={{ height: "50px" }}
-          >
-            <strong>Register</strong>
-          </Button>
-        </Modal.Footer>
+
+        
       </form>
     </Modal>
   );
 };
 
 const inputStyle = {
-  height: "50px",
+  height: "60px",
+  borderRadius:'10px',
+  backgroundColor:'#F9F9F9',
+  opacity:'0,6'
 };
+
+const modalBodyStyle = {
+  height:'570px'
+}
+
+const headerStyle = {
+  width:'100%',
+  textAlign:'center',
+  marginTop:'20px',
+  marginBottom:'50px'
+}
+
+const logoStyle = {
+  height :'60px',
+  width :'60px',
+}
+
+const btnStyle = {
+ height:'50px',
+ borderRadius:'10px',
+ fontWeight:'bold',
+ fontSize:'13px'
+}
+
+const alreadyStyle = {
+  fontSize:'14px'
+}
+
+const signInStyle ={
+  color:'#374FC9'
+}
+
 
 export default RegisterModal;
