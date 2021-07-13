@@ -97,6 +97,9 @@ body::-webkit-scrollbar {
   cursor: pointer;
   background-color: #F9F9F9;
 }
+.watchlist-item-container:hover .icon-container {
+  visibility: visible;
+}
 .allcoins-item-container:hover {
   cursor: pointer;
   background-color: #F9F9F9;
@@ -137,4 +140,11 @@ body::-webkit-scrollbar {
 
 #alert-exit:hover {
   cursor: pointer;
+}
+
+.icon-container {
+  visibility:hidden;
+}
+.graph-icon:hover {
+transform: scale(1.1);
 }
