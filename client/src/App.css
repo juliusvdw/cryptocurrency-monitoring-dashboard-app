@@ -1,6 +1,20 @@
 .App {
 }
 
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-size: 14px;
+  opacity:0.7 !important
+}
+::-moz-placeholder { /* Firefox 19+ */
+  font-size: 14px;
+  opacity:0.7 !important}
+:-ms-input-placeholder { /* IE 10+ */
+  font-size: 14px;
+  opacity:0.7 !important}
+:-moz-placeholder { /* Firefox 18- */
+  font-size: 14px;
+  opacity:0.7 !important}
+
 body {
   background-color: #EAEDF7;
 }
@@ -147,4 +161,8 @@ body::-webkit-scrollbar {
 }
 .graph-icon:hover {
 transform: scale(1.1);
+}
+
+.modal-input {
+  
 }
