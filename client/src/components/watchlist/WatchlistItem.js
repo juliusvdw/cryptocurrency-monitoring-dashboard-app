@@ -1,5 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import {GraphUp} from 'react-bootstrap-icons';
+
 
 //bring in context
 import WatchlistContext from "../../context/watchlist/watchlistContext";
@@ -46,6 +48,7 @@ const WatchlistItem = (props) => {
               <div className = 'watchlist-item-container' style = {itemContainerStyle} onClick = {() => setHomeChart(`${symbol.toUpperCase()}USD`)}>
                 <div className = 'coin-id-container' style = {coinIdStyle}>
                 <span className = 'watchlist-img pl-3'> <img src = {`${image}`} style = {imageStyle}></img> </span> <span className = 'pl-3' >{id}</span> <span style = {symbolStyle}><strong>{symbol.toUpperCase()}</strong></span>
+                <span style = {graphStyle} className = 'icon-container'> <Link to = {`/chart/${symbol}usd`}><GraphUp className = 'graph-icon'/></Link></span>
                 </div>
 
                 <div className = 'coin-price-container' style = {infoStyle}>
@@ -96,6 +99,12 @@ const symbolStyle = {
   fontSize:'12px',
   color:'#A5A5A5',
   marginLeft :'10px'
+}
+
+const graphStyle = {
+  paddingLeft:'30px',
+  color:'#374FC9',
+  fontSize:'18px'
 }
 
 export default WatchlistItem;
