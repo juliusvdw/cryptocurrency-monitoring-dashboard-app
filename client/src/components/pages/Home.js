@@ -45,7 +45,6 @@ const Home = () => {
         <div className = 'row home-top-cards-row px-4 py-3'>
           <div className = 'col-lg-8'>
             <div className = 'home-top-card' style = {topCardStyle}>
-              
               <WatchList />
             </div>
 
@@ -97,6 +96,7 @@ const bottomCardStyle = {
   marginLeft:'25px'
 
 }
+
 
 
 

@@ -28,6 +28,9 @@ function App(props) {
   const [loginModalShow, setLoginModalShow] = useState(false);
   const [registerModalShow, setRegisterModalShow] = useState(false);
 
+  
+ 
+
   return (
     <AuthState
       setLoginModalShow={setLoginModalShow}
