@@ -163,6 +163,6 @@ body::-webkit-scrollbar {
 transform: scale(1.1);
 }
 
-.modal-input {
-  
+.modal-switch:hover {
+  cursor: pointer;
 }

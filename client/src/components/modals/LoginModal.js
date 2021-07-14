@@ -70,7 +70,7 @@ const LoginModal = (props) => {
           />
 
             <div className = 'text-center mt-3' style = {alreadyStyle}>
-            <p>Dont't have an account? <span style = {signInStyle} onClick = {() => handleModalSwitch()}>Create Account</span></p>
+            <p>Dont't have an account? <span className = 'modal-switch' style = {signInStyle} onClick = {() => handleModalSwitch()}>Create Account</span></p>
             </div>
 
             <div className = 'text-right pr-2 mt-4'>
@@ -94,7 +94,7 @@ const inputStyle = {
 };
 
 const modalBodyStyle = {
-  height:'540px'
+  height:'520px'
 }
 
 const headerStyle = {
