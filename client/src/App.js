@@ -81,10 +81,14 @@ function App(props) {
 
                         <LoginModal
                           show={loginModalShow}
+                          setLoginModalShow = {setLoginModalShow}
+                          setRegisterModalShow = {setRegisterModalShow}
                           onHide={() => setLoginModalShow(false)}
                         />
                         <RegisterModal
                           show={registerModalShow}
+                          setLoginModalShow = {setLoginModalShow}
+                          setRegisterModalShow = {setRegisterModalShow}
                           onHide={() => setRegisterModalShow(false)}
                         />
                       </div>
