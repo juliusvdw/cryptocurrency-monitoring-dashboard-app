@@ -22,6 +22,11 @@ const RegisterModal = (props) => {
     userRegister(formData);
   };
 
+  const handleModalSwitch = () => {
+    props.setRegisterModalShow(false);
+    props.setLoginModalShow(true);
+  }
+
   return (
     <Modal
       {...props}
@@ -72,7 +77,7 @@ const RegisterModal = (props) => {
           />
 
           <div className = 'text-center mt-3' style = {alreadyStyle}>
-          <p>Already have an account? <span style = {signInStyle}>Sign In</span></p>
+          <p>Already have an account? <span style = {signInStyle} onClick = {() => handleModalSwitch()}>Sign In</span></p>
           </div>
 
           <div className = 'text-right pr-2 mt-4'>

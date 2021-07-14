@@ -21,6 +21,12 @@ const LoginModal = (props) => {
     userLogin(formData);
   };
 
+  const handleModalSwitch = () => {
+    props.setLoginModalShow(false);
+    props.setRegisterModalShow(true);
+  }
+
+
   return (
     <Modal
       {...props}
@@ -64,7 +70,7 @@ const LoginModal = (props) => {
           />
 
             <div className = 'text-center mt-3' style = {alreadyStyle}>
-            <p>Dont't have an account? <span style = {signInStyle}>Create Account</span></p>
+            <p>Dont't have an account? <span style = {signInStyle} onClick = {() => handleModalSwitch()}>Create Account</span></p>
             </div>
 
             <div className = 'text-right pr-2 mt-4'>
