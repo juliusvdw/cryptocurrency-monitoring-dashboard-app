@@ -30,17 +30,18 @@ const LoginModal = (props) => {
       animation
     >
       <form onSubmit={onSubmit}>
-        <Modal.Header closeButton className=" text-center">
-          <Modal.Title id="contained-modal-title-vcenter text-center">
-            <div className="mx-auto">
-              <h2 className="mx-auto">Log In</h2>
-            </div>
-          </Modal.Title>
-        </Modal.Header>
+        
         <Modal.Body
-          style={{ minHeight: "150px", marginTop: "15px" }}
+          style={modalBodyStyle}
           className="mx-auto "
         >
+
+            < div style = {headerStyle} className = ''>
+              <img src = '/cryptologo.png' style = {logoStyle}/>
+              <h4 className = 'mt-3'>Sign in</h4>
+              <p>to continue to <strong>Cryptohawk</strong></p>
+            </div>
+
           <input
             style={inputStyle}
             type="text"
@@ -61,23 +62,61 @@ const LoginModal = (props) => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+
+            <div className = 'text-center mt-3' style = {alreadyStyle}>
+            <p>Dont't have an account? <span style = {signInStyle}>Create Account</span></p>
+            </div>
+
+            <div className = 'text-right pr-2 mt-4'>
+            <button type  = ' submit' style = {btnStyle} className = 'btn btn-outline-primary'>Sign In</button>
+
+          </div>
         </Modal.Body>
-        <Modal.Footer>
-          <Button
-            type="submit"
-            className="form-control w-90"
-            style={{ height: "50px" }}
-          >
-            <strong>Login</strong>
-          </Button>
-        </Modal.Footer>
+        
       </form>
     </Modal>
   );
 };
 
+
+
 const inputStyle = {
-  height: "50px",
+  height: "60px",
+  borderRadius:'10px',
+  backgroundColor:'#F9F9F9',
+  opacity:'0,6'
 };
+
+const modalBodyStyle = {
+  height:'540px'
+}
+
+const headerStyle = {
+  width:'100%',
+  textAlign:'center',
+  marginTop:'20px',
+  marginBottom:'50px'
+}
+
+const logoStyle = {
+  height :'60px',
+  width :'60px',
+}
+
+const btnStyle = {
+ height:'50px',
+ borderRadius:'10px',
+ fontWeight:'bold',
+ fontSize:'13px',
+ width:'90px'
+}
+
+const alreadyStyle = {
+  fontSize:'14px'
+}
+
+const signInStyle ={
+  color:'#374FC9'
+}
 
 export default LoginModal;
