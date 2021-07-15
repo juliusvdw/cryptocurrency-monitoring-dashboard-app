@@ -13,7 +13,7 @@ const Watchlist = () => {
 
   useEffect(() => {
     getWatchlist()
-  })
+  }, [])
   //Define session storage
   const sessionStorage = window.sessionStorage;
 
