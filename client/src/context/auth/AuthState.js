@@ -35,7 +35,7 @@ const AuthState = (props) => {
         const id = data.user._id;
         const user = { username, id };
         setUser(user);
-      }
+      } 
     } catch (err) {
       console.log(err);
     }
@@ -95,15 +95,15 @@ const AuthState = (props) => {
         console.log("succesfully registered user");
 
         setRegisterModalShow(false);
-        await userLogin(formData);
         await createWatchlist();
       } else {
         console.log("registration failure");
         return;
       }
       //Log user in and create watchlsit for account
-      await userLogin(formData);
       await createWatchlist();
+      await userLogin(formData);
+      
     } catch (err) {
       console.log(err);
     }
@@ -112,8 +112,9 @@ const AuthState = (props) => {
   const userLogout = async () => {
     try {
       console.log("logging out");
-      await axios.get("auth/logout");
+      await axios.get("/auth/logout");
       dispatch({ type: SET_USER, payload: null });
+      console.log('logged out')
 
       window.location.reload();
     } catch (err) {
