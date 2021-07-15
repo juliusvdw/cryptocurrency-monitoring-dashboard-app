@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext,useEffect } from "react";
 import { Link } from "react-router-dom";
 import NavSearchBox from "./NavSearchBox";
 
@@ -7,7 +7,11 @@ import { set } from "mongoose";
 
 const TopNav = ({ setRegisterModalShow, setLoginModalShow }) => {
   const authContext = useContext(AuthContext);
-  const { user, userLogout } = authContext;
+  const { user, userLogout,getUser } = authContext;
+
+  useEffect(() => {
+    getUser()
+  },[])
 
 
   //Set active link on click
