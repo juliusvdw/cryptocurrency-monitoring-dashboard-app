@@ -52,7 +52,7 @@ const LoginModal = (props) => {
             style={inputStyle}
             type="text"
             placeholder="Username"
-            className="form-control mb-4"
+            className="form-control mb-3"
             value={username}
             name="username"
             onChange={(e) => setUsername(e.target.value)}
@@ -62,7 +62,7 @@ const LoginModal = (props) => {
             style={inputStyle}
             type="password"
             placeholder="Password"
-            className="form-control mb-2"
+            className="form-control mb-3"
             value={password}
             name="password"
             onChange={(e) => setPassword(e.target.value)}
