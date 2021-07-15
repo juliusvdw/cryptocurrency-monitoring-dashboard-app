@@ -49,7 +49,7 @@ const WatchlistState = (props) => {
     try {
       const res = await axios.get("/watchlist");
 
-      console.log(res);
+      
       const watchlist = await res.data.watchlist;
       console.log(watchlist);
       dispatch({ type: GET_WATCHLIST_COINS, payload: watchlist });
