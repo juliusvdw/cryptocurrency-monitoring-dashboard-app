@@ -10,8 +10,7 @@ import AuthContext from "../../context/auth/authContext";
 import { session } from "passport";
 
 const Watchlist = () => {
-
-
+ 
   //Define session storage
   const sessionStorage = window.sessionStorage;
 
@@ -46,13 +45,16 @@ const Watchlist = () => {
     alertClass = 'alert-success'
   }
   
-
+  
+  
   //Create watchlist by mapping through watchlist state
-  if (loading != 'watchlist' && cryptos.length > 1 && watchlist !== undefined) {
+  if (loading != 'watchlist' && cryptos.length > 1 && watchlist !== undefined ) {
     //Map watchlist state to create watchlist list with watchlistItems
     const watchList = watchlist.map((coin) => {
       //find index of this coin we will be accessing
       const index = cryptos.findIndex((crypto) => crypto.id === coin.id);
+      
+      
 
       //pull data for specific coin from cryptos array
       let price = cryptos[index].current_price;
