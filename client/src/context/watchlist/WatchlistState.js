@@ -61,10 +61,17 @@ const WatchlistState = (props) => {
   const setCryptos = async (loadingID) => {
     setLoading(loadingID);
     try {
-      const res = await axios.get(
+      const res1 = await axios.get(
         `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=250`
       );
-      const data = await res.data;
+      const res2 = await axios.get(
+        'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=2&sparkline=false'        );
+      const data1 = await res1.data;
+      const data2 = await res2.data;
+
+      const data = [...data1, ...data2]
+
+      console.log(data)
 
       dispatch({ type: SET_CRYPTOS, payload: data });
     } catch (err) {
