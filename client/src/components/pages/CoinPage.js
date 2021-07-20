@@ -1,5 +1,7 @@
 import React, { useEffect, useContext, Fragment } from "react";
 import { useLocation, Link } from "react-router-dom";
+import TradingViewWidget, { Themes, BarStyles, } from "react-tradingview-widget";
+
 
 import AutchContext from "../../context/auth/authContext";
 import CoinFeedContext from "../../context/coinFeed/coinFeedContext";
@@ -66,7 +68,69 @@ const CoinPage = (props) => {
   }
 
   return (
-    <div
+    <div className = 'container-fluid '>
+
+    <div className = 'row coin-top-cards-row px-4 py-3'>
+      <div className = 'col-lg-4'>
+        <div className = 'home-top-card' style = {topCardStyle}>
+        </div>
+
+      </div>
+      <div className = 'col-lg-4'>
+        <div className = 'home-top-card' style = {topCardStyle}>
+        </div>
+
+      </div>
+     
+      <div className = 'col-lg-4'>
+      <div className = 'home-top-card' style = {topCardStyle}>
+
+        
+  </div>
+      
+      
+    </div>
+
+    </div>
+
+    <div className = 'row home-botttom-chart-row'>
+      <div className = 'col-lg-12'>
+        <div className = 'home-bottom-card' style = {bottomCardStyle}>
+        <TradingViewWidget
+          symbol={`${symbol}usd`}
+          theme={Themes.LIGHT}
+          locale="en"
+          style = {BarStyles.AREA}
+          autosize
+    />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  );
+};
+
+const topCardStyle = {
+  height: '350px',
+  backgroundColor: 'white',
+  borderRadius: '15px',
+  padding: '20px',
+  overflowY : 'auto'
+}
+
+const bottomCardStyle = {
+  backgroundColor:'white',
+  borderRadius:'15px',
+  height:'370px',
+  marginRight: '25px',
+  marginLeft:'25px'
+
+}
+
+export default CoinPage;
+
+{/* <div
       className="container-fluid pl-4 pr-4  w-100 h-90"
       id="home-container"
       style={{ marginTop: "35px", overflowY: "auto" }}
@@ -141,8 +205,4 @@ const CoinPage = (props) => {
           </div>
         </div>
       </div>
-    </div>
-  );
-};
-
-export default CoinPage;
+    </div> */}
