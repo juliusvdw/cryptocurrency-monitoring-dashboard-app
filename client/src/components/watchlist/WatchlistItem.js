@@ -1,17 +1,19 @@
 import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import {GraphUp} from 'react-bootstrap-icons';
+import {GraphUp, XLg} from 'react-bootstrap-icons';
 
 
 //bring in context
 import WatchlistContext from "../../context/watchlist/watchlistContext";
 import ChartContext from "../../context/chartwidget/chartContext";
+import AuthContext from "../../context/auth/authContext";
 
 
 
 const WatchlistItem = (props) => {
   const watchlistContext = useContext(WatchlistContext);
   const chartContext = useContext(ChartContext);
+  const authContext = useContext(AuthContext);
 
   const {
     getCoin,
@@ -21,6 +23,10 @@ const WatchlistItem = (props) => {
     loading,
     watchlistDelete,
   } = watchlistContext;
+
+  const {
+    user
+  } = authContext;
 
   const { setHomeChart} = chartContext;
 
@@ -46,6 +52,7 @@ const WatchlistItem = (props) => {
   return (
     <>
               <div className = 'watchlist-item-container' style = {itemContainerStyle} onClick = {() => setHomeChart(`${symbol.toUpperCase()}USD`)}>
+
                 <div className = 'coin-id-container' style = {coinIdStyle}>
                 <span className = 'watchlist-img pl-3'> <img src = {`${image}`} style = {imageStyle}></img> </span> <span className = 'pl-3' >{id}</span> <span style = {symbolStyle}><strong>{symbol.toUpperCase()}</strong></span>
                 <span style = {graphStyle} className = 'icon-container'> <Link to = {`/chart/${symbol}usd`}><GraphUp className = 'graph-icon'/></Link></span>
@@ -63,7 +70,7 @@ const WatchlistItem = (props) => {
                   <span style = {{color: `${percentColour}`, fontWeight:'bold'}}>{percentChange} %</span>
                 </div>
               
-              
+               { user != null &&<div className = 'delete-icon-container'><span className = 'mr-4'><XLg className = 'delete-icon' style = {deleteStyle} onClick = {() => watchlistDelete(id)}/></span></div> }
               </div>
             
          </>
@@ -105,6 +112,10 @@ const graphStyle = {
   paddingLeft:'30px',
   color:'#374FC9',
   fontSize:'18px'
+}
+
+const deleteStyle = {
+  color: '#A5A5A5'
 }
 
 export default WatchlistItem;
