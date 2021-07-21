@@ -114,6 +114,15 @@ body::-webkit-scrollbar {
 .watchlist-item-container:hover .icon-container {
   visibility: visible;
 }
+
+
+.delete-icon-container {
+  visibility: hidden;
+}
+
+.watchlist-item-container:hover .delete-icon-container {
+  visibility: visible;
+}
 .allcoins-item-container:hover {
   cursor: pointer;
   background-color: #F9F9F9;
@@ -161,6 +170,10 @@ body::-webkit-scrollbar {
 }
 .graph-icon:hover {
 transform: scale(1.1);
+}
+.delete-icon:hover {
+transform: scale(1.1);
+color:#D11A2A !important
 }
 
 .modal-switch:hover {
