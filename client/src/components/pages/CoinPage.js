@@ -45,6 +45,7 @@ const CoinPage = (props) => {
   let price;
   let id;
   let symbol;
+  let image;
 
   //modify the data for display purposes if currentCoin has loaded
 
@@ -53,6 +54,10 @@ const CoinPage = (props) => {
     percentChange = currentCoin.price_change_percentage_24h;
     id = currentCoin.id;
     symbol = currentCoin.symbol;
+    image = currentCoin.image;
+
+    //Replace first id letter with capital
+    id = id.replace(id.charAt(0), id.charAt(0).toUpperCase())
 
     percentChange > 0
       ? (percentColour = "lightgreen")
@@ -72,18 +77,22 @@ const CoinPage = (props) => {
 
     <div className = 'row coin-top-cards-row px-4 py-3'>
       <div className = 'col-lg-4'>
-        <div className = 'home-top-card' style = {topCardStyle}>
+        <div className = 'coin-top-card' style = {topCardStyle}>
+          <div className = 'd-flex ' style = {cardFlexRow}>
+            <img src = {`${image}`} style = {imageStyle} />
+            <span className = 'pl-3' style = {cardMainText}>{id}</span>
+            <span className = 'mt-1' style = {symbolStyle}>{`(${symbol.toUpperCase()})`}</span>
+          </div>
         </div>
-
       </div>
       <div className = 'col-lg-4'>
-        <div className = 'home-top-card' style = {topCardStyle}>
+        <div className = 'coin-top-card' style = {topCardStyle}>
         </div>
 
       </div>
      
       <div className = 'col-lg-4'>
-      <div className = 'home-top-card' style = {topCardStyle}>
+      <div className = 'coin-top-card' style = {topCardStyle}>
 
         
   </div>
@@ -95,7 +104,7 @@ const CoinPage = (props) => {
 
     <div className = 'row home-botttom-chart-row'>
       <div className = 'col-lg-12'>
-        <div className = 'home-bottom-card' style = {bottomCardStyle}>
+        <div className = 'coin-bottom-card' style = {bottomCardStyle}>
         <TradingViewWidget
           symbol={`${symbol}usd`}
           theme={Themes.LIGHT}
@@ -115,7 +124,7 @@ const topCardStyle = {
   height: '350px',
   backgroundColor: 'white',
   borderRadius: '15px',
-  padding: '20px',
+  padding: '30px',
   overflowY : 'auto'
 }
 
@@ -126,6 +135,28 @@ const bottomCardStyle = {
   marginRight: '25px',
   marginLeft:'25px'
 
+}
+
+const imageStyle = {
+  height:'50px',
+  width:'50px'
+}
+
+const cardMainText = {
+  color:'#021E69',
+  fontSize:'20px',
+  fontWeight:'450'
+}
+
+const cardFlexRow = {
+  alignItems:'center'
+}
+
+const symbolStyle = {
+  fontSize:'12px',
+  color:'#A5A5A5',
+  marginLeft :'10px',
+  fontWeight:'bold'
 }
 
 export default CoinPage;
