@@ -9,9 +9,7 @@ const TopNav = ({ setRegisterModalShow, setLoginModalShow }) => {
   const authContext = useContext(AuthContext);
   const { user, userLogout,getUser } = authContext;
 
-  useEffect(() => {
-    getUser()
-  },[])
+
 
 
   //Set active link on click
