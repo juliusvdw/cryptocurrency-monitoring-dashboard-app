@@ -16,7 +16,7 @@ router.post("/create", async (req, res) => {
       { id: "dogecoin" },
       { id: "ethereum" },
       { id: "dash" },
-      { id: "dash" },
+      { id: "wanchain" },
       { id: "eos" },
       { id: "cardano" },
       { id: "wanchain" },
