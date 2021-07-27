@@ -2,8 +2,13 @@ import React, { useContext } from "react";
 import {GraphUp, PlusCircle, ArrowUpShort, ArrowDownShort} from 'react-bootstrap-icons';
 
 import CoinFeedContext from "../../context/coinFeed/coinFeedContext";
+import AuthContext from "../../context/auth/authContext";
 
 const CoinStats = () => {
+
+  //Bring in auth context to determine user
+  const authContext = useContext(AuthContext);
+  const {user} = authContext;
 
   //Bring in coin stats from coinfeed context
   const coinFeedContext = useContext(CoinFeedContext);
@@ -80,7 +85,7 @@ const CoinStats = () => {
             <span className = 'mt-1' style = {symbolStyle}>{`(${symbol.toUpperCase()})`}</span>
 
             <span className = 'ml-4' style = {graphIconStyle}><GraphUp className = 'icon'/></span>
-            <span className = 'ml-auto' style = {addIconStyle}><PlusCircle className = 'icon'/></span>
+           { user!= null && <span className = 'ml-auto' style = {addIconStyle}><PlusCircle className = 'icon'/></span>}
       </div>
 
       <div style = {priceBoxStyle}>
