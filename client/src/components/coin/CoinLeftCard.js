@@ -36,15 +36,7 @@ const CoinStats = () => {
     //Destructure coin data from stats context for easier access
     const { market_data } = stats;
     const {
-      market_cap,
-      ath,
-      total_volume,
-      high_24h,
-      low_24h,
-      atl,
-      market_cap_rank,
-      current_price,
-      
+      current_price, 
     } = market_data;
 
     let percentChange = market_data.price_change_percentage_24h_in_currency.usd;
@@ -86,7 +78,7 @@ const CoinStats = () => {
             <span className = 'mt-1' style = {symbolStyle}>{`(${symbol.toUpperCase()})`}</span>
 
             <span className = 'ml-4' style = {graphIconStyle}><Link to = {`/chart/${symbol}usd`}><GraphUp className = 'icon'/> </ Link></span>
-           { user!= null && <span className = 'ml-auto' style = {addIconStyle}><PlusCircle className = 'icon'/></span>}
+           { user != null && <span className = 'ml-auto' style = {addIconStyle}><PlusCircle className = 'icon'/></span>}
       </div>
 
       <div style = {priceBoxStyle}>
@@ -123,7 +115,7 @@ const symbolStyle = {
 
 const mainTextStyle = {
   color:'#021E69',
-  fontSize:'20px',
+  fontSize:'22px',
   fontWeight:'450'
 }
 
