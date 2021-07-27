@@ -17,7 +17,7 @@ const AuthState = (props) => {
   const { setLoginModalShow, setRegisterModalShow } = props;
 
   //set User state
-  const setUser = (user) => {
+  const setUser = async(user) => {
     dispatch({ type: SET_USER, payload: user });
   };
 
@@ -25,11 +25,11 @@ const AuthState = (props) => {
   const getUser = async () => {
     try {
       const res = await axios.get(
-        "auth/user"
+        "/auth/user"
       );
 
       const data = res.data;
-
+        
       if (res.data.user) {
         const username = data.user.username;
         const id = data.user._id;
@@ -60,7 +60,7 @@ const AuthState = (props) => {
           username,
           id,
         };
-        setUser(user);
+        await setUser(user);
         setLoginModalShow(false);
         window.location.reload();
       }
