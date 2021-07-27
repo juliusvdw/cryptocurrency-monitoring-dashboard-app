@@ -19,7 +19,7 @@ router.post("/create", async (req, res) => {
       { id: "wanchain" },
       { id: "eos" },
       { id: "cardano" },
-      { id: "wanchain" },
+      { id: "monero" },
     ];
     await Watchlist.create({ user: user._id, watchlist }, (err) => {
       if (err) {
