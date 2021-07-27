@@ -8,7 +8,7 @@ import CoinFeedContext from "../../context/coinFeed/coinFeedContext";
 import WatchlistContext from "../../context/watchlist/watchlistContext";
 
 import CoinLeftCard from "../coin/CoinLeftCard";
-import CoinInfo from "../coin/CoinLeftCard";
+import CoinInfo from "../coin/CoinInfo";
 
 const CoinPage = (props) => {
   const authContext = useContext(AutchContext);
@@ -70,8 +70,6 @@ const CoinPage = (props) => {
     price.toString().length === 1
       ? (price = `${price},00`)
       : (price = price.toString().slice(0, 7));
-
-      const coinStats = {price,percentChange,id,symbol,image}
   }
 
   return (
@@ -123,7 +121,7 @@ const topCardStyle = {
   backgroundColor: 'white',
   borderRadius: '15px',
   padding: '30px',
-  overflowY : 'auto'
+  overflowY : 'auto',
 }
 
 const bottomCardStyle = {
@@ -135,27 +133,11 @@ const bottomCardStyle = {
 
 }
 
-const imageStyle = {
-  height:'50px',
-  width:'50px'
-}
 
-const cardMainText = {
-  color:'#021E69',
-  fontSize:'20px',
-  fontWeight:'450'
-}
 
-const cardFlexRow = {
-  alignItems:'center'
-}
 
-const symbolStyle = {
-  fontSize:'12px',
-  color:'#A5A5A5',
-  marginLeft :'10px',
-  fontWeight:'bold'
-}
+
+
 
 export default CoinPage;
 
