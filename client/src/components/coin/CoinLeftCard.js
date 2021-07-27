@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import {Link} from 'react-router-dom';
 import {GraphUp, PlusCircle, ArrowUpShort, ArrowDownShort} from 'react-bootstrap-icons';
 
 import CoinFeedContext from "../../context/coinFeed/coinFeedContext";
@@ -84,7 +85,7 @@ const CoinStats = () => {
             <span className = 'pl-3' style = {mainTextStyle}>{id.replace(id.charAt(0), id.charAt(0).toUpperCase())}</span>
             <span className = 'mt-1' style = {symbolStyle}>{`(${symbol.toUpperCase()})`}</span>
 
-            <span className = 'ml-4' style = {graphIconStyle}><GraphUp className = 'icon'/></span>
+            <span className = 'ml-4' style = {graphIconStyle}><Link to = {`/chart/${symbol}usd`}><GraphUp className = 'icon'/> </ Link></span>
            { user!= null && <span className = 'ml-auto' style = {addIconStyle}><PlusCircle className = 'icon'/></span>}
       </div>
 
