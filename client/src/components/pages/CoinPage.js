@@ -7,8 +7,8 @@ import AutchContext from "../../context/auth/authContext";
 import CoinFeedContext from "../../context/coinFeed/coinFeedContext";
 import WatchlistContext from "../../context/watchlist/watchlistContext";
 
-import CoinStats from "../coin/CoinStats";
-import CoinInfo from "../coin/CoinInfo";
+import CoinLeftCard from "../coin/CoinLeftCard";
+import CoinInfo from "../coin/CoinLeftCard";
 
 const CoinPage = (props) => {
   const authContext = useContext(AutchContext);
@@ -70,6 +70,8 @@ const CoinPage = (props) => {
     price.toString().length === 1
       ? (price = `${price},00`)
       : (price = price.toString().slice(0, 7));
+
+      const coinStats = {price,percentChange,id,symbol,image}
   }
 
   return (
@@ -78,11 +80,7 @@ const CoinPage = (props) => {
     <div className = 'row coin-top-cards-row px-4 py-3'>
       <div className = 'col-lg-4'>
         <div className = 'coin-top-card' style = {topCardStyle}>
-          <div className = 'd-flex ' style = {cardFlexRow}>
-            <img src = {`${image}`} style = {imageStyle} />
-            <span className = 'pl-3' style = {cardMainText}>{id}</span>
-            <span className = 'mt-1' style = {symbolStyle}>{`(${symbol.toUpperCase()})`}</span>
-          </div>
+          <CoinLeftCard />
         </div>
       </div>
       <div className = 'col-lg-4'>
