@@ -179,3 +179,8 @@ color:#D11A2A !important
 .modal-switch:hover {
   cursor: pointer;
 }
+
+.icon:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
