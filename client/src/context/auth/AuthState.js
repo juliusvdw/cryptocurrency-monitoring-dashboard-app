@@ -95,14 +95,16 @@ const AuthState = (props) => {
         console.log("succesfully registered user");
 
         setRegisterModalShow(false);
+        await userLogin(formData);
         await createWatchlist();
       } else {
         console.log("registration failure");
         return;
       }
       //Log user in and create watchlsit for account
-      await createWatchlist();
       await userLogin(formData);
+      await createWatchlist();
+     
       
     } catch (err) {
       console.log(err);
