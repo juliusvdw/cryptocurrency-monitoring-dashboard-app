@@ -4,12 +4,17 @@ import {GraphUp, PlusCircle, ArrowUpShort, ArrowDownShort} from 'react-bootstrap
 
 import CoinFeedContext from "../../context/coinFeed/coinFeedContext";
 import AuthContext from "../../context/auth/authContext";
+import WatchlistContext from "../../context/watchlist/watchlistContext";
 
 const CoinStats = () => {
 
   //Bring in auth context to determine user
   const authContext = useContext(AuthContext);
   const {user} = authContext;
+
+  //Bring in watchlist context to add coin to watchlist
+  const watchlistContext = useContext(WatchlistContext);
+  const {watchlistAdd} = watchlistContext;
 
   //Bring in coin stats from coinfeed context
   const coinFeedContext = useContext(CoinFeedContext);
@@ -78,7 +83,7 @@ const CoinStats = () => {
             <span className = 'mt-1' style = {symbolStyle}>{`(${symbol.toUpperCase()})`}</span>
 
             <span className = 'ml-4' style = {graphIconStyle}><Link to = {`/chart/${symbol}usd`}><GraphUp className = 'icon'/> </ Link></span>
-           { user != null && <span className = 'ml-auto' style = {addIconStyle}><PlusCircle className = 'icon'/></span>}
+           { user != null && <span className = 'ml-auto' style = {addIconStyle}><PlusCircle className = 'icon' onClick = {() => watchlistAdd(id)}/></span>}
       </div>
 
       <div style = {priceBoxStyle}>
