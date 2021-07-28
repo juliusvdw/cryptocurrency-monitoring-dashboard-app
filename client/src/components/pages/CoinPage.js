@@ -9,6 +9,7 @@ import WatchlistContext from "../../context/watchlist/watchlistContext";
 
 import CoinLeftCard from "../coin/CoinLeftCard";
 import CoinMiddleCard from "../coin/CoinMiddleCard";
+import CoinRightCard from "../coin/CoinRightCard";
 
 const CoinPage = (props) => {
   const authContext = useContext(AutchContext);
@@ -90,12 +91,10 @@ const CoinPage = (props) => {
      
       <div className = 'col-lg-4'>
       <div className = 'coin-top-card' style = {topCardStyle}>
+        <CoinRightCard />
 
-        
-  </div>
-      
-      
-    </div>
+        </div>
+         </div>
 
     </div>
 
