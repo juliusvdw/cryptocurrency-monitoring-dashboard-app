@@ -50,18 +50,19 @@ const WatchlistItem = (props) => {
   );
 
   //Handle setHomeChart function, only run if it is not delete button clicked
-  const handleSetHomeChart = (e, symbol) => {
-    if(e.target.classList.contains('delete-icon')) {
-      return
+  const handleSetHomeChart = (e, symbol,id) => {
+
+    console.log(e.target)
+    if(e.target.classList.contains('delete-icon') || e.target.parentElement.classList.contains('delete-icon')) {
+      watchlistDelete(id)
     } else {
       setHomeChart(`${symbol.toUpperCase()}USD`)
-
     }
   }
 
   return (
     <>
-              <div className = 'watchlist-item-container' style = {itemContainerStyle} onClick = {(e) => handleSetHomeChart(e,symbol)}>
+              <div className = 'watchlist-item-container' style = {itemContainerStyle} onClick = {(e) => handleSetHomeChart(e,symbol,id)}>
 
                 <div className = 'coin-id-container' style = {coinIdStyle}>
                 <span className = 'watchlist-img pl-3'> <img src = {`${image}`} style = {imageStyle}></img> </span> <span className = 'pl-3' >{id}</span> <span style = {symbolStyle}><strong>{symbol.toUpperCase()}</strong></span>
@@ -80,7 +81,7 @@ const WatchlistItem = (props) => {
                   <span style = {{color: `${percentColour}`, fontWeight:'bold'}}>{percentChange} %</span>
                 </div>
               
-               { user != null &&<div className = 'delete-icon-container'><span className = 'mr-4'><XLg className = 'delete-icon' style = {deleteStyle} onClick = {() => watchlistDelete(id)}/></span></div> }
+               { user != null &&<div className = 'delete-icon-container'><span className = 'mr-4'><XLg className = 'delete-icon' style = {deleteStyle} /></span></div> }
               </div>
             
          </>
