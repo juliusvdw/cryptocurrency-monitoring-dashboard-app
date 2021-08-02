@@ -184,3 +184,23 @@ color:#D11A2A !important
   transform: scale(1.1);
   cursor: pointer;
 }
+
+/*Tablet specific CSS */
+
+@media only screen and (device-width: 768px) {
+  .home-top-card {
+    margin-top :15px;
+    height: 440px !important;
+  }
+  .icon-container {
+    visibility: visible;
+  }
+
+  .delete-icon {
+    visibility: visible;
+  }
+
+  .coin-id-container {
+    flex:3 !important
+  }
+}
