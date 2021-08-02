@@ -77,12 +77,12 @@ const CoinPage = (props) => {
     <div className = 'container-fluid '>
 
     <div className = 'row coin-top-cards-row px-4 py-3'>
-      <div className = 'col-lg-4'>
+      <div className = 'col-lg-4 col-md-6'>
         <div className = 'coin-top-card' style = {topCardStyle}>
           <CoinLeftCard />
         </div>
       </div>
-      <div className = 'col-lg-4'>
+      <div className = 'col-lg-4 col-md-6'>
         <div className = 'coin-top-card' style = {topCardStyle}>
           <CoinMiddleCard />
         </div>
@@ -90,7 +90,7 @@ const CoinPage = (props) => {
       </div>
      
       <div className = 'col-lg-4'>
-      <div className = 'coin-top-card' style = {topCardStyle}>
+      <div className = 'coin-top-card coin-percent-card' style = {topCardStyle}>
         <CoinRightCard />
 
         </div>
