@@ -95,7 +95,7 @@ const TopNav = ({ setRegisterModalShow, setLoginModalShow }) => {
            
           </div>
         ) : (
-          <div style={{ marginRight: "80px" }}>
+          <div style={{ }}>
             <div
               className="logout-btn btn btn-outline-danger d-none d-md-block"
               style={btnStyle}
