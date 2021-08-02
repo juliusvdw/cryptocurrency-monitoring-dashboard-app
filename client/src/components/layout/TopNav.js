@@ -75,7 +75,7 @@ const TopNav = ({ setRegisterModalShow, setLoginModalShow }) => {
               </li>
             </ul>
 
-            <div className="d-none d-md-block mx-auto" style={{ width: "41%" }}>
+            <div className="d-none d-md-block mx-auto" style={{ width: "37%" }}>
           <NavSearchBox />
         </div>
           </div>
