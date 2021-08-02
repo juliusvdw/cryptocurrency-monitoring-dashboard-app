@@ -61,7 +61,7 @@ const Home = () => {
 
         </div>
 
-        <div className = 'row home-botttom-chart-row'>
+        <div className = 'row home-botttom-chart-row d-none d-lg-block'>
           <div className = 'col-lg-12'>
             <div className = 'home-bottom-card' style = {bottomCardStyle}>
             <TradingViewWidget

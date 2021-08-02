@@ -28,7 +28,7 @@ const TopNav = ({ setRegisterModalShow, setLoginModalShow }) => {
     
   
         <nav
-          className="navbar navbar-expand-lg "
+          className="navbar navbar-expand-md "
           style={navbarStyle}
         >
           <a
@@ -75,7 +75,7 @@ const TopNav = ({ setRegisterModalShow, setLoginModalShow }) => {
               </li>
             </ul>
 
-            <div className="d-none d-lg-block  mx-auto" style={{ width: "41%" }}>
+            <div className="d-none d-md-block mx-auto" style={{ width: "41%" }}>
           <NavSearchBox />
         </div>
           </div>
@@ -92,13 +92,7 @@ const TopNav = ({ setRegisterModalShow, setLoginModalShow }) => {
             >
               Sign in
             </div>
-            <div
-              className="btn btn-outline-primary nav-btn"
-              style={btnStyle}
-              onClick={setRegisterModalShow}
-            >
-              Create account
-            </div>
+           
           </div>
         ) : (
           <div style={{ marginRight: "80px" }}>
