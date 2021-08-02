@@ -73,7 +73,7 @@ const WatchlistItem = (props) => {
                   <span >$ {price}</span>
                 </div>
 
-                <div className = 'coin-price-container' style = {infoStyle}>
+                <div className = 'coin-price-container d-none d-lg-block' style = {infoStyle}>
                   <span >$ {high}</span>
                 </div>
 
