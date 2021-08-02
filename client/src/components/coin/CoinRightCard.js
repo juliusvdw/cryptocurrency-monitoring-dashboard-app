@@ -27,23 +27,13 @@ const CoinRightCard = () => {
                twoWeekChange = price_change_percentage_14d,
                monthlyChange = price_change_percentage_30d
 
-         //Classify classes to determine the color of the percentage displayed
-         const styleUp = {
-             color:'green',
-             fontSize:'15px',
-             fontWeight:'450'
-         }
-         const styleDown = {
-             color:'red',
-             fontSize:'15px',
-             fontWeight:'450'
-         }
+         
          
 
 
         return (
             <>
-            <div style = {headingStyle}> <h6>Price Change Percentage</h6></div>
+            <div style = {headingStyle}> <h6>Price Change %</h6></div>
             <div style = {rowStyle}><span style = {labelStyle}>24H Change</span> <span style = {dailyChange > 0 ? styleUp : styleDown} className = 'ml-auto'> {dailyChange.toString().slice(0,5)} %</span></div>
             <div style = {rowStyle}><span style = {labelStyle}>7D Change</span><span style = {weeklyChange > 0 ? styleUp : styleDown} className = 'ml-auto'>{weeklyChange.toString().slice(0,5)} %</span></div>
             <div style = {rowStyle}><span style = {labelStyle}>14D Change</span><span style = {twoWeekChange > 0 ? styleUp : styleDown} className = 'ml-auto'>{twoWeekChange.toString().slice(0,5)} %</span></div>
@@ -82,6 +72,18 @@ const headingStyle = {
        fontSize: ' 14px',
        opacity:'0.7'
    }
+
+   //Classify classes to determine the color of the percentage displayed
+   const styleUp = {
+    color:'#4e9d66',
+    fontSize:'15px',
+    fontWeight:'450'
+}
+const styleDown = {
+    color:'#F14848',
+    fontSize:'15px',
+    fontWeight:'450'
+}
 
 
 
