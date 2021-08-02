@@ -188,6 +188,8 @@ color:#D11A2A !important
 /*Tablet specific CSS */
 
 @media only screen and (device-width: 768px) {
+
+  /*Home page tablet styling */
   .home-top-card {
     margin-top :15px;
     height: 440px !important;
@@ -202,5 +204,29 @@ color:#D11A2A !important
 
   .coin-id-container {
     flex:3 !important
+  }
+
+  /*Navbar tablet styling */
+
+  .nav-buttons {
+    margin-right:0px !important
+  }
+
+  .navbar-brand {
+    padding-left: 22px  ;
+  }
+ .nav-btn {
+   margin-right:0px !important
+ }
+  .navbar-nav {
+    margin-left:35px
+  }
+
+  .search-input {
+    margin-left:-20px
+  }
+
+  .nav-item {
+    margin-right: 30px !important;
   }
 }
