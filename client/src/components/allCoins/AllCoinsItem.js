@@ -1,10 +1,16 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import {GraphUp, PlusCircle} from 'react-bootstrap-icons';
+
 
 import WatchlistContext from "../../context/watchlist/watchlistContext";
+import AuthContext from "../../context/auth/authContext";
 
 const AllCoinsItem = (props) => {
   const watchlistContext = useContext(WatchlistContext);
+  const authContext = useContext(AuthContext);
+
+  const {user} = authContext;
 
   const { watchlistAdd } = watchlistContext;
   const {
@@ -24,13 +30,16 @@ const AllCoinsItem = (props) => {
         <span><img src = {image} style = {imageStyle}/></span>
         <span className = 'pl-3' style = {idStyle}>{id.replace(id.charAt(0), id.charAt(0).toUpperCase())}</span>
         <span style = {symbolStyle}>{symbol.toUpperCase()}</span>
+        <span style = {graphStyle} className = 'icon-container'><Link to = {`/chart/${symbol}usd`}><GraphUp className = 'graph-icon'/></Link></span>
         </div>
 
         <div className = 'price-container' style = {infoContainerStyle}>
           <span style = {priceStyle}>$ {current_price}</span>
         </div>
 
-            <div
+           
+
+        <div
                  style={{
               color: price_change_percentage_24h > 0 ? "#4E9D66" : "#F14848", flex:'1', fontWeight:'bold',fontSize:'15px'
             }}
@@ -41,13 +50,8 @@ const AllCoinsItem = (props) => {
             %
           </div>
 
-        <div className = 'price-container' style = {infoContainerStyle}>
-          <span style = {priceStyle}>$ {current_price}</span>
-        </div>
+          { user != null &&<div className = 'add-icon-container'><span className = 'mr-4'><PlusCircle className = 'add-icon' onClick = {() => watchlistAdd(id)}/></span></div> }
 
-        <div className = 'price-container' style = {infoContainerStyle}>
-          <span style = {priceStyle}>$ {current_price}</span>
-        </div>
 
     </div>
    
@@ -85,7 +89,15 @@ const infoContainerStyle = {
   flex:'1',
   fontSize:'15px'
 }
+
 const priceStyle = {
+
+}
+
+const graphStyle = {
+  paddingLeft:'30px',
+  color:'#374FC9',
+  fontSize:'18px'
 }
 
 export default AllCoinsItem;
