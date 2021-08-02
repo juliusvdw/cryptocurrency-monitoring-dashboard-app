@@ -114,7 +114,7 @@ const NavSearchBox = () => {
           className="form-control search-input"
           value={searchValue}
           onChange={onChange}
-          placeholder="Search cryptocurrencies"
+          placeholder="Search..."
           style={inputStyle}
         ></input>
       </form>
