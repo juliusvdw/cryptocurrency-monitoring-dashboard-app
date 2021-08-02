@@ -37,7 +37,7 @@ const Chart = (props) => {
 };
 
 const containerStyle = {
-  height:'calc(100vh - 78px)',
+  height:'calc(100vh - 85px)',
   width:'97%',
   margin: ' 15px auto'
 }
