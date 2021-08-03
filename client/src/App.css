@@ -127,6 +127,13 @@ body::-webkit-scrollbar {
   cursor: pointer;
   background-color: #F9F9F9;
 }
+.allcoins-item-container:hover .graph-icon {
+  visibility: visible;
+}
+
+.add-icon:hover {
+  transform: scale(1.1);
+}
 
 .topmovers-item-container:hover {
   cursor: pointer;
@@ -229,4 +236,18 @@ color:#D11A2A !important
   .nav-item {
     margin-right: 30px !important;
   }
+
+  /* Coins page styling */
+  .coins-container {
+    height: 90vh !important;
+    padding-left:50px !important;
+    padding-right:50px !important
+  }
+
+  /* Single coin page styling */
+  .coin-percent-card {
+    margin-top: 15px;
+  }
+
+
 }
