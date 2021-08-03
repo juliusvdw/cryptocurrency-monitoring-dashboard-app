@@ -192,6 +192,10 @@ color:#D11A2A !important
   cursor: pointer;
 }
 
+.watchlist-symbol {
+  font-weight: bold;
+}
+
 /*Tablet specific CSS */
 
 @media only screen and (device-width: 768px) {
@@ -250,4 +254,58 @@ color:#D11A2A !important
   }
 
 
+}
+
+
+/*Styling for mobile devices */
+@media (min-width: 320px) and (max-width: 480px) {
+  
+.home-top-cards-row {
+  padding: 0px !important;
+  margin-top: 15px !important;
+}  
+
+.home-top-card {
+  margin-bottom:15px;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+}
+
+.watchlist-img {
+  width: 25px !important;
+  height: 25px !important;
+}
+
+.watchlist-id {
+  display: none;
+}
+
+.coin-id-container {
+  flex: 1 !important;
+}
+
+.coin-price-container {
+  padding-left: 0px !important;
+  text-align: center;
+  font-weight: bold;
+}
+
+.graph-icon {
+  display: none ;
+}
+
+.delete-icon {
+  visibility: visible;
+}
+
+.watchlist-symbol {
+  color: #021E69 !important;
+  font-size: 14px !important;
+  font-weight: 450 !important;
+  
+}
+
+.topmovers-percent {
+  text-align: center !important;
+}
 }
