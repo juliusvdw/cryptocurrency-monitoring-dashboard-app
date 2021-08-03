@@ -42,13 +42,13 @@ const Watchlist = () => {
         <div className="topmovers-item-container" style = {itemStyle}> 
          
             <div className="mt-2" style = {idStyle}>
-              <span className="pt-2 pl-2"> <img  src = {`${coin.image}`} style = {imageStyle} /></span>
+              <span className="pt-2 pl-2 "> <img  src = {`${coin.image}`} style = {imageStyle} className = 'watchlist-img'/></span>
               <span className=" pl-3 pt-2 ">{coin.id}</span>
               <span style = {symbolStyle}>
                 <span><strong>{coin.symbol.toUpperCase()}</strong> </span>
               </span>
             </div>
-            <span className="pt-2 " style={percentStyle}>
+            <span className="pt-2 topmovers-percent" style={percentStyle}>
               {coin.percentChange.toString().slice(0, 5)}%
             </span>
           
