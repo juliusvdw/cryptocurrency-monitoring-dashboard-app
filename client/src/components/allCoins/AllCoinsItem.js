@@ -27,13 +27,13 @@ const AllCoinsItem = (props) => {
     <div className = 'allcoins-item-container' style = {containerStyle}>
 
       <div className = 'coin-id-container' style = {idContainerStyle}>
-        <span><img src = {image} style = {imageStyle}/></span>
-        <span className = 'pl-3' style = {idStyle}>{id.replace(id.charAt(0), id.charAt(0).toUpperCase())}</span>
-        <span style = {symbolStyle}>{symbol.toUpperCase()}</span>
+        <span><img src = {image} style = {imageStyle} className = 'allcoins-image'/></span>
+        <span className = 'pl-3' style = {idStyle}>{id.length < 9 ? id.replace(id.charAt(0), id.charAt(0).toUpperCase()) : symbol.toUpperCase()}</span>
+        <span style = {symbolStyle} className = 'allcoins-symbol'>{symbol.toUpperCase()}</span>
         <span style = {graphStyle} className = 'icon-container'><Link to = {`/chart/${symbol}usd`}><GraphUp className = 'graph-icon'/></Link></span>
         </div>
 
-        <div className = 'price-container' style = {infoContainerStyle}>
+        <div className = 'price-container allcoins-stat' style = {infoContainerStyle}>
           <span style = {priceStyle}>$ {current_price}</span>
         </div>
 
@@ -43,6 +43,7 @@ const AllCoinsItem = (props) => {
                  style={{
               color: price_change_percentage_24h > 0 ? "#4E9D66" : "#F14848", flex:'1', fontWeight:'bold',fontSize:'15px'
             }}
+            className = 'allcoins-stat'
           >
             {price_change_percentage_24h && price_change_percentage_24h < 0
               ? String(price_change_percentage_24h).slice(1, 5)
