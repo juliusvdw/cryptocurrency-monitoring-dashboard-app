@@ -28,7 +28,7 @@ const TopNav = ({ setRegisterModalShow, setLoginModalShow }) => {
     
   
         <nav
-          className="navbar navbar-expand-md "
+          className="navbar navbar-expand-md navbar-light "
           style={navbarStyle}
         >
           <a

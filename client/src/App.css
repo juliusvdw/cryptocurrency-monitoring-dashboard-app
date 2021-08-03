@@ -259,6 +259,29 @@ color:#D11A2A !important
 
 /*Styling for mobile devices */
 @media (min-width: 320px) and (max-width: 480px) {
+
+  /*Navbar styling */
+
+  .navbar-brand {
+    padding-left: 0px;
+  }
+
+  .navbar-nav {
+    margin-left: 0px;
+  }
+
+  .nav-item {
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .nav-link {
+    font-size: 18px !important;
+    font-weight: bold;
+  }
+
+  /*Home page dashboard styling*/
   
 .home-top-cards-row {
   padding: 0px !important;
