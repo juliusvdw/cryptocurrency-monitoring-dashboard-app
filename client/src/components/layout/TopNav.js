@@ -38,6 +38,11 @@ const TopNav = ({ setRegisterModalShow, setLoginModalShow }) => {
           >
             <img src = '/cryptologo.png' style={{ height:'45px', width:'45px', fontSize: "24px" }} /> 
           </a>
+
+          <div className="d-md-none mx-auto" style={{ width: "55%" }}>
+          <NavSearchBox />
+        </div>
+
           <button
             className="navbar-toggler"
             type="button"
@@ -78,15 +83,14 @@ const TopNav = ({ setRegisterModalShow, setLoginModalShow }) => {
             <div className="d-none d-md-block mx-auto" style={{ width: "37%" }}>
           <NavSearchBox />
         </div>
-          </div>
 
-          {user === null ? (
+        {user === null ? (
           <div
-            className="nav-buttons ml-auto  d-none d-md-block"
-            style={{ marginRight: "50px" }}
+            className="nav-buttons ml-auto  "
+            
           >
             <div
-              className="btn btn-outline-primary mr-3 nav-btn"
+              className="btn btn-outline-primary  nav-btn"
               style={btnStyle}
               onClick={setLoginModalShow}
             >
@@ -95,9 +99,9 @@ const TopNav = ({ setRegisterModalShow, setLoginModalShow }) => {
            
           </div>
         ) : (
-          <div style={{ }}>
+          <div className = 'nav-buttons'>
             <div
-              className="logout-btn btn btn-outline-danger d-none d-md-block"
+              className="nav-btn btn btn-outline-danger "
               style={btnStyle}
               onClick={() => userLogout()}
             >
@@ -105,6 +109,11 @@ const TopNav = ({ setRegisterModalShow, setLoginModalShow }) => {
             </div>
           </div>
         )}
+          </div>
+
+          
+
+          
         </nav>
     </>
   );
