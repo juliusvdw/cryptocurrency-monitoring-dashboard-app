@@ -65,7 +65,7 @@ const WatchlistItem = (props) => {
               <div className = 'watchlist-item-container' style = {itemContainerStyle} onClick = {(e) => handleSetHomeChart(e,symbol,id)}>
 
                 <div className = 'coin-id-container' style = {coinIdStyle}>
-                <span className = 'watchlist-img pl-3'> <img src = {`${image}`} style = {imageStyle}></img> </span> <span className = 'pl-3' >{id}</span> <span style = {symbolStyle}><strong>{symbol.toUpperCase()}</strong></span>
+                <span className = 'watchlist-img pl-2'> <img src = {`${image}`} style = {imageStyle} className = 'watchlist-img'></img> </span> <span className = 'pl-3 watchlist-id' >{id}</span> <span style = {symbolStyle} className = 'watchlist-symbol'>{symbol.toUpperCase()}</span>
                 <span style = {graphStyle} className = 'icon-container'> <Link to = {`/chart/${symbol}usd`}><GraphUp className = 'graph-icon'/></Link></span>
                 </div>
 
