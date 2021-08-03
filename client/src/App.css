@@ -65,6 +65,10 @@ body::-webkit-scrollbar {
   transition: 0.15s;
 }
 
+.nav-buttons {
+  margin-right: 20px;
+}
+
 .navbar-nav {
   margin-left: 45px;
 }
@@ -280,6 +284,14 @@ color:#D11A2A !important
     font-size: 18px !important;
     font-weight: bold;
   }
+
+  .nav-btn {
+    width: 90%;
+  }
+  .nav-buttons{
+  text-align: center; 
+  margin-right: 0px;
+ }
 
   /*Home page dashboard styling*/
   
