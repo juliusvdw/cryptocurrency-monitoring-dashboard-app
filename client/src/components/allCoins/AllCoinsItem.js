@@ -24,6 +24,8 @@ const AllCoinsItem = (props) => {
   } = props.coin;
 
   return (
+
+    <Link to = {`/coin/${id}`} style = {{textDecoration:'none'}}>
     <div className = 'allcoins-item-container' style = {containerStyle}>
 
       <div className = 'coin-id-container' style = {idContainerStyle}>
@@ -55,6 +57,7 @@ const AllCoinsItem = (props) => {
 
 
     </div>
+    </Link>
    
   );
 };

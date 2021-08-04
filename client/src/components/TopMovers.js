@@ -1,4 +1,5 @@
 import React, { Fragment, useContext, useEffect } from "react";
+import {Link} from 'react-router-dom';
 import {ArrowRepeat} from 'react-bootstrap-icons';
 
 
@@ -39,6 +40,7 @@ const Watchlist = () => {
     //Map the finalList and output the formatted data
     const outputList = finalList.map((coin) => {
       return (
+        <Link to = {`/coin/${coin.id}`} style = {{textDecoration:'none'}}>
         <div className="topmovers-item-container" style = {itemStyle}> 
          
             <div className="mt-2" style = {idStyle}>
@@ -53,6 +55,7 @@ const Watchlist = () => {
             </span>
           
         </div>
+        </Link>
       );
     });
     return (
