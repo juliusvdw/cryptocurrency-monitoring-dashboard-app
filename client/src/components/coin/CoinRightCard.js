@@ -44,9 +44,16 @@ const CoinRightCard = () => {
         )
     } else {
         return (
-            <> 
-            Loading
-            </>
+            
+                <div className="row " style={{ marginTop: "80px", height: "200px" }}>
+                  <div
+                    className="spinner-border text-primary mx-auto"
+                    role="status"
+                    style={{ width: "3.5rem", height: "3.5rem" }}
+                  >
+                    <span className="sr-only">Loading...</span>
+                  </div>
+                </div>
         )
     }
 }
