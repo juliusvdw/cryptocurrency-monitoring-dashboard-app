@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import {GraphUp, XLg} from 'react-bootstrap-icons';
+import {useMediaQuery} from 'react-responsive';
 
 
 //bring in context
@@ -60,8 +61,11 @@ const WatchlistItem = (props) => {
     }
   }
 
+  //Create mobile media query with react-reponsive
+  const isMobile = useMediaQuery({ query : '(max-width: 480px)'})
+
   return (
-    <>
+    <>         <Link to = {isMobile ? `/coin/${props.coinId}` : '#'} style = {{textDecoration:'none'}}>
               <div className = 'watchlist-item-container' style = {itemContainerStyle} onClick = {(e) => handleSetHomeChart(e,symbol,id)}>
 
                 <div className = 'coin-id-container' style = {coinIdStyle}>
@@ -83,6 +87,7 @@ const WatchlistItem = (props) => {
               
                { user != null &&<div className = 'delete-icon-container'><span className = 'mr-4'><XLg className = 'delete-icon' style = {deleteStyle} /></span></div> }
               </div>
+              </Link>
             
          </>
     
