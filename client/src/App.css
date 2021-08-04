@@ -245,6 +245,8 @@ color:#D11A2A !important
     margin-right: 30px !important;
   }
 
+
+
   /* Coins page styling */
   .coins-container {
     height: 90vh !important;
@@ -370,5 +372,23 @@ color:#D11A2A !important
 
 .coin-id-container {
   font-size: 14px;
+}
+
+/*Single coin page styling*/
+
+.coin-top-cards-row {
+  padding:0px  !important
+}
+
+.coin-top-card {
+  height: 320px !important;
+  margin-top: 15px;
+  overflow: hidden !important;
+}
+
+.coin-bottom-card {
+  margin-right:0px !important;
+  margin-left:0px !important;
+  margin-top: 15px;
 }
 }
