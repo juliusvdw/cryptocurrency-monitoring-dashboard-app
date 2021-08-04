@@ -1,5 +1,7 @@
 import React, { Fragment, useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { useMediaQuery } from 'react-responsive'
+
 
 import WatchlistContext from "../../context/watchlist/watchlistContext";
 import CoinFeedContext from "../../context/coinFeed/coinFeedContext";
@@ -24,6 +26,9 @@ const NavSearchBox = () => {
       setCryptos();
     }
   }, []);
+
+  //Create media query for mobile iwth react-responsive
+  const isMobile = useMediaQuery({query: '(max-width: 480px)'});
 
   //fetch crypto suggestion values from cryptos state and push them to suggestion values
   let suggestionValues = [];
@@ -78,6 +83,10 @@ const NavSearchBox = () => {
     setSearchValue("");
     setShowSuggestions("none");
   };
+  //Determine width of search box based on device used 
+  let navWidth;
+  isMobile ? navWidth = '50%' :
+  navWidth = '32%'
 
   //output suggestions list conditionally
   let suggestionsList;
@@ -126,7 +135,7 @@ const NavSearchBox = () => {
           position: "absolute",
           display: `${showSuggestions}`,
           zIndex: "100",
-          width: "27%",
+          width: `${navWidth}`,
           maxHeight: "250px",
           overflowY: "auto",
           borderRadius : '15px',
