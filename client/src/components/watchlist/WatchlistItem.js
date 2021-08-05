@@ -63,14 +63,28 @@ const WatchlistItem = (props) => {
 
   //Create mobile media query with react-reponsive
   const isMobile = useMediaQuery({ query : '(max-width: 480px)'})
+  
+  //Set navbar active link on Chart icon click 
+  const setActiveLink = (linkTarget) => {
+    let links = document.querySelectorAll('.nav-link');
+     links = [...links]
 
+    links.forEach((link) => {
+      link.classList.remove('active');
+      if(link.innerHTML == linkTarget){
+        link.classList.add('active')
+      }
+    })
+
+  }
+  
   return (
     <>         <Link to = {isMobile ? `/coin/${props.coinId}` : '#'} style = {{textDecoration:'none'}}>
               <div className = 'watchlist-item-container' style = {itemContainerStyle} onClick = {(e) => handleSetHomeChart(e,symbol,id)}>
 
                 <div className = 'coin-id-container' style = {coinIdStyle}>
                 <span className = 'watchlist-img pl-2'> <img src = {`${image}`} style = {imageStyle} className = 'watchlist-img'></img> </span> <span className = 'pl-3 watchlist-id' >{id}</span> <span style = {symbolStyle} className = 'watchlist-symbol'>{symbol.toUpperCase()}</span>
-                <span style = {graphStyle} className = 'icon-container'> <Link to = {`/chart/${symbol}usd`}><GraphUp className = 'graph-icon'/></Link></span>
+                <span style = {graphStyle} className = 'icon-container' onClick = {() =>setActiveLink('Chart')}> <Link to = {`/chart/${symbol}usd`}><GraphUp className = 'graph-icon'/></Link></span>
                 </div>
 
                 <div className = 'coin-price-container' style = {infoStyle}>
