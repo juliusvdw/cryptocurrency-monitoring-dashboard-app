@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect} from "react";
 
 import WatchlistContext from "../../context/watchlist/watchlistContext";
 
@@ -7,6 +7,7 @@ import AllCoinsItem from "./AllCoinsItem";
 const AllCoins = () => {
   const watchlistContext = useContext(WatchlistContext);
   const { loading, cryptos } = watchlistContext;
+
 
   //conditionally return either Allcoins or Loading
   if (!loading && cryptos.length > 1) {
