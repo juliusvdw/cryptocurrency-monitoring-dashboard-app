@@ -31,6 +31,7 @@ const TopNav = ({ setRegisterModalShow, setLoginModalShow }) => {
           className="navbar navbar-expand-md navbar-light "
           style={navbarStyle}
         >
+          <Link to = {'/'}>
           <a
             className="navbar-brand"
             href="#"
@@ -38,6 +39,7 @@ const TopNav = ({ setRegisterModalShow, setLoginModalShow }) => {
           >
             <img src = '/cryptologo.png' style={{ height:'45px', width:'45px', fontSize: "24px" }} /> 
           </a>
+          </Link>
 
           <div className="d-md-none mx-auto" style={{ width: "55%" }}>
           <NavSearchBox />
