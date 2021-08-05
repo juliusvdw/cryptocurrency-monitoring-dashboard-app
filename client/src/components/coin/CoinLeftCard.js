@@ -20,6 +20,20 @@ const CoinStats = () => {
   const coinFeedContext = useContext(CoinFeedContext);
   const { stats } = coinFeedContext;
 
+   //Set navbar active link on Chart icon click 
+   const setActiveLink = (linkTarget) => {
+    let links = document.querySelectorAll('.nav-link');
+     links = [...links]
+
+    links.forEach((link) => {
+      link.classList.remove('active');
+      if(link.innerHTML == linkTarget){
+        link.classList.add('active')
+      }
+    })
+
+  }
+
   //Declare output var to store what will be output
   let statsOutput;
 
@@ -82,7 +96,7 @@ const CoinStats = () => {
             <span className = 'pl-3' style = {mainTextStyle}>{id.replace(id.charAt(0), id.charAt(0).toUpperCase())}</span>
             <span className = 'mt-1' style = {symbolStyle}>{`(${symbol.toUpperCase()})`}</span>
 
-            <span className = 'ml-4' style = {graphIconStyle}><Link to = {`/chart/${symbol}usd`}><GraphUp className = 'icon'/> </ Link></span>
+            <span className = 'ml-4' style = {graphIconStyle} onClick = {() => setActiveLink('Chart')}><Link to = {`/chart/${symbol}usd`}><GraphUp className = 'icon'/> </ Link></span>
            { user != null && <span className = 'ml-auto' style = {addIconStyle}><PlusCircle className = 'icon' onClick = {() => watchlistAdd(id)}/></span>}
       </div>
 

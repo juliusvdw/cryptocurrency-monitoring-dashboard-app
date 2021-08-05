@@ -7,6 +7,8 @@ import WatchlistContext from "../../context/watchlist/watchlistContext";
 import AuthContext from "../../context/auth/authContext";
 
 const AllCoinsItem = (props) => {
+
+  
   const watchlistContext = useContext(WatchlistContext);
   const authContext = useContext(AuthContext);
 
@@ -23,6 +25,20 @@ const AllCoinsItem = (props) => {
     symbol,
   } = props.coin;
 
+   //Set navbar active link on Chart icon click 
+   const setActiveLink = (linkTarget) => {
+    let links = document.querySelectorAll('.nav-link');
+     links = [...links]
+
+    links.forEach((link) => {
+      link.classList.remove('active');
+      if(link.innerHTML == linkTarget){
+        link.classList.add('active')
+      }
+    })
+
+  }
+
   return (
 
     <Link to = {`/coin/${id}`} style = {{textDecoration:'none'}}>
@@ -32,7 +48,7 @@ const AllCoinsItem = (props) => {
         <span><img src = {image} style = {imageStyle} className = 'allcoins-image'/></span>
         <span className = 'pl-3' style = {idStyle}>{id.length < 9 ? id.replace(id.charAt(0), id.charAt(0).toUpperCase()) : symbol.toUpperCase()}</span>
         <span style = {symbolStyle} className = 'allcoins-symbol'>{symbol.toUpperCase()}</span>
-        <span style = {graphStyle} className = 'icon-container'><Link to = {`/chart/${symbol}usd`}><GraphUp className = 'graph-icon'/></Link></span>
+        <span style = {graphStyle} className = 'icon-container' onClick = {() =>setActiveLink('Chart')}><Link to = {`/chart/${symbol}usd`}><GraphUp className = 'graph-icon'/></Link></span>
         </div>
 
         <div className = 'price-container allcoins-stat' style = {infoContainerStyle}>
