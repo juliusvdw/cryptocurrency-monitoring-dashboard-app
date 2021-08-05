@@ -23,6 +23,22 @@ const TopNav = ({ setRegisterModalShow, setLoginModalShow }) => {
     })
   }
 
+  //Set home link on navbar logo click
+  const setHomeLink = () => {
+    let links = document.querySelectorAll('.nav-link');
+    links = [...links];
+
+    links.forEach(link => {
+      if(link.innerText != 'Dashboard'){
+        link.classList.remove('active')
+
+      } else {
+        link.classList.add('active')
+      }
+    })
+
+  }
+
   return (
     <>
     
@@ -31,7 +47,7 @@ const TopNav = ({ setRegisterModalShow, setLoginModalShow }) => {
           className="navbar navbar-expand-md navbar-light "
           style={navbarStyle}
         >
-          <Link to = {'/'}>
+          <Link to = {'/'} onClick = {() => setHomeLink()}>
           <a
             className="navbar-brand"
             href="#"
