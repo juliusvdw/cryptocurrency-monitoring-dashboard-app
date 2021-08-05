@@ -29,6 +29,17 @@ const CoinPage = (props) => {
     //Make the coin id lower case then fetch data
     const id = props.match.params.id;
     getCoinFeed(id.toLowerCase());
+
+    //Clear navbar active links  in useEffect
+    let links = document.querySelectorAll('.nav-link');
+    links = [...links];
+
+    console.log(links)
+
+    links.forEach((link) => {
+      link.classList.remove('active')
+    })
+  
   }, []);
 
   //Access the current coin from the cryptos array
