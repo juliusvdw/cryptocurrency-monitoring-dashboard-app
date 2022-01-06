@@ -50,7 +50,7 @@ const LoginModal = (props) => {
 
           <input
             style={inputStyle}
-            type="text"
+            type="email"
             placeholder="Username"
             className="form-control mb-3"
             value={username}

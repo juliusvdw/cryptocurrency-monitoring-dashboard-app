@@ -48,19 +48,19 @@ const AuthState = (props) => {
   const userLogin = async (formData) => {
     try {
       console.log("logging in");
-      const user = await signInWithEmailAndPassword(auth, formData.username, formData.password)
+      const data = await signInWithEmailAndPassword(auth, formData.username, formData.password)
+      const user = data.user
       console.log(user)
-      // if (user) {
-      //   const username = data.user.username;
-      //   const id = data.user._id;
-      //   const user = {
-      //     username,
-      //     id,
-      //   };
-      //   await setUser(user);
-      //   setLoginModalShow(false);
-      //   window.location.reload();
-      // }
+        
+        const userInfo = {
+          username: formData.username,
+          id: user.uid
+        };
+
+         setUser(userInfo);
+        setLoginModalShow(false);
+        window.location.reload();
+      
     } catch (err) {
       console.log(err);
     }
@@ -100,7 +100,7 @@ const AuthState = (props) => {
     }
   };
 
-  
+
   //User Logout
   const userLogout = async () => {
     try {
