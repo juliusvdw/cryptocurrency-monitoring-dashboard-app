@@ -14,12 +14,19 @@ const RegisterModal = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    const formData = {
-      username,
-      password,
-    };
+    //Validate password with confirmed password 
+    if(password != confirmPassword) {
+      return
+    } else {
+      const formData = {
+        username,
+        password,
+      };
+  
+      userRegister(formData);
+    }
 
-    userRegister(formData);
+    
   };
 
   const handleModalSwitch = () => {
@@ -48,8 +55,8 @@ const RegisterModal = (props) => {
           
           <input
             style={inputStyle}
-            type="text"
-            placeholder="Username"
+            type="email"
+            placeholder="Email"
             className="form-control mb-3 w-90 mx-auto modal-input"
             value={username}
             name="username"
