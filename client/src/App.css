@@ -202,7 +202,7 @@ color:#D11A2A !important
 
 /*Tablet specific CSS */
 
-@media only screen and (device-width: 768px) {
+@media (min-width: 480px) and (max-width: 768px) {
 
   /*Home page tablet styling */
   .home-top-card {
@@ -223,8 +223,17 @@ color:#D11A2A !important
 
   /*Navbar tablet styling */
 
+  .active {
+    border: none  !important;
+  }
+
+  .navbar-nav {
+    padding-top:10px !important
+  }
   .nav-buttons {
-    margin-right:0px !important
+    margin-right:0px !important;
+    margin-left: 35px !important;
+    margin-top: 10px !important;
   }
 
   .navbar-brand {
@@ -256,6 +265,10 @@ color:#D11A2A !important
 
   /* Single coin page styling */
   .coin-percent-card {
+    margin-top: 15px;
+  }
+
+  .coin-top-card {
     margin-top: 15px;
   }
 
