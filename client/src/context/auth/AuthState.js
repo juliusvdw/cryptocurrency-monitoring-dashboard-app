@@ -1,5 +1,7 @@
 import React, { useReducer } from "react";
 import { useHistory, Redirect } from "react-router-dom";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../config/firebaseConfig";
 import axios from "axios";
 
 import AuthContext from "./authContext";
@@ -16,25 +18,26 @@ const AuthState = (props) => {
 
   const { setLoginModalShow, setRegisterModalShow } = props;
 
+  
   //set User state
-  const setUser = async(user) => {
-    dispatch({ type: SET_USER, payload: user });
+  const setUser = (user) => {
+
+    console.log('setting user')
+     dispatch({ type: SET_USER, payload: user });
   };
 
   //Get logged in user
   const getUser = async () => {
     try {
-      const res = await axios.get(
-        "/auth/user"
-      );
-
-      const data = res.data;
+      const user = auth.currentUser;
         
-      if (res.data.user) {
-        const username = data.user.username;
-        const id = data.user._id;
-        const user = { username, id };
-        setUser(user);
+      if (user) {
+
+        console.log(user)
+        // const username = data.user.username;
+        // const id = data.user._id;
+        // const user = { username, id };
+        // setUser(user);
       } 
     } catch (err) {
       console.log(err);
@@ -45,25 +48,19 @@ const AuthState = (props) => {
   const userLogin = async (formData) => {
     try {
       console.log("logging in");
-      const res = await axios({
-        method: "post",
-        url: "/auth/login",
-        data: formData,
-      });
-
-      const data = res.data;
-
-      if (data.success === true) {
-        const username = data.user.username;
-        const id = data.user._id;
-        const user = {
-          username,
-          id,
-        };
-        await setUser(user);
-        setLoginModalShow(false);
-        window.location.reload();
-      }
+      const user = await signInWithEmailAndPassword(auth, formData.username, formData.password)
+      console.log(user)
+      // if (user) {
+      //   const username = data.user.username;
+      //   const id = data.user._id;
+      //   const user = {
+      //     username,
+      //     id,
+      //   };
+      //   await setUser(user);
+      //   setLoginModalShow(false);
+      //   window.location.reload();
+      // }
     } catch (err) {
       console.log(err);
     }
@@ -82,34 +79,28 @@ const AuthState = (props) => {
 
   //User Register
   const userRegister = async (formData) => {
+
     try {
-      const res = await axios({
-        method: "post",
-        url: "/auth/register",
-        data: formData,
-      });
-
-      const data = res.data;
-
-      if (data.success === true) {
-        console.log("succesfully registered user");
-
-        setRegisterModalShow(false);
-        await userLogin(formData);
-        await createWatchlist();
-      } else {
-        console.log("registration failure");
-        return;
-      }
-      //Log user in and create watchlsit for account
-      await userLogin(formData);
-      await createWatchlist();
-     
+      const data = await createUserWithEmailAndPassword(auth,formData.username, formData.password)
+      const user = data.user
       
-    } catch (err) {
-      console.log(err);
+      const userInfo = {
+          username: formData.username,
+          id: user.uid
+        };
+
+        
+          setUser(userInfo);
+          setRegisterModalShow(false);
+          window.location.reload();
+        
+
+    } catch (error) {
+      console.log(error.message, '123456')
     }
   };
+
+  
   //User Logout
   const userLogout = async () => {
     try {
