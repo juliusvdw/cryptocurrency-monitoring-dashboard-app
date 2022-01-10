@@ -102,8 +102,7 @@ const AuthState = (props) => {
   const userLogout = async () => {
     try {
       await signOut(auth)
-
-      window.location.reload();
+      setUser(null)
     } catch (err) {
       console.log(err);
     }
