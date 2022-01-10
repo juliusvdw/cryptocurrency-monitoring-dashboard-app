@@ -1,6 +1,6 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 import { useHistory, Redirect } from "react-router-dom";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../config/firebaseConfig";
 import axios from "axios";
 
@@ -18,48 +18,42 @@ const AuthState = (props) => {
 
   const { setLoginModalShow, setRegisterModalShow } = props;
 
+  //Update user on auth state change 
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log(user, 'user logged in')
+        //Store user info to be stored in user state with setUser
+        const userInfo = {
+          username: user.email,
+          id: user.uid
+        };
+
+        //Set user state globally
+         setUser(userInfo);
+       
+      } else {
+        console.log('no user logged in')
+      }
+    });
+  },[])
+
   
   //set User state
   const setUser = (user) => {
-
-    console.log('setting user')
      dispatch({ type: SET_USER, payload: user });
   };
 
-  //Get logged in user
-  const getUser = async () => {
-    try {
-      const user = auth.currentUser;
-        
-      if (user) {
-
-        console.log(user)
-        // const username = data.user.username;
-        // const id = data.user._id;
-        // const user = { username, id };
-        // setUser(user);
-      } 
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   //User Login
   const userLogin = async (formData) => {
     try {
-      console.log("logging in");
+      //Login with firebase
       const data = await signInWithEmailAndPassword(auth, formData.username, formData.password)
       const user = data.user
-      console.log(user)
-        
-        const userInfo = {
-          username: formData.username,
-          id: user.uid
-        };
-
-         setUser(userInfo);
+      
         setLoginModalShow(false);
-        window.location.reload();
+        // window.location.reload();
       
     } catch (err) {
       console.log(err);
@@ -81,33 +75,25 @@ const AuthState = (props) => {
   const userRegister = async (formData) => {
 
     try {
+      //Register with firebase
       const data = await createUserWithEmailAndPassword(auth,formData.username, formData.password)
       const user = data.user
-      
-      const userInfo = {
-          username: formData.username,
-          id: user.uid
-        };
-
+  
+      setRegisterModalShow(false);
+      // window.location.reload();
         
-          setUser(userInfo);
-          setRegisterModalShow(false);
-          window.location.reload();
-        
-
     } catch (error) {
-      console.log(error.message, '123456')
+      console.log(error.message)
     }
+
+    console.log(auth.currentUser)
   };
 
 
   //User Logout
   const userLogout = async () => {
     try {
-      console.log("logging out");
-      await axios.get("/auth/logout");
-      dispatch({ type: SET_USER, payload: null });
-      console.log('logged out')
+      await signOut(auth)
 
       window.location.reload();
     } catch (err) {
@@ -119,7 +105,6 @@ const AuthState = (props) => {
     <AuthContext.Provider
       value={{
         user: state.user,
-        getUser,
         userLogin,
         userRegister,
         userLogout,
