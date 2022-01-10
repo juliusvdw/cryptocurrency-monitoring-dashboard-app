@@ -30,11 +30,7 @@ const Home = () => {
   //fetch all crypto prices and add to state with useEffect
   //Fetch user on page load
   useEffect(() => {
-    if (user === null) {
-      getUser();
-    }
     setCryptos();
-    getNews();
   }, []);
 
   return (

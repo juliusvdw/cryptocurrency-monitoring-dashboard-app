@@ -14,10 +14,6 @@ const AllCoinsPage = () => {
 
   //get and set (refresh) crypto prices on the load of the page
   useEffect(() => {
-    if (user === null) {
-      getUser();
-    }
-
     setCryptos();
   }, []);
 

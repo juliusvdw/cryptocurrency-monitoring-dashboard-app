@@ -8,11 +8,7 @@ const Chart = (props) => {
 
   const { user, getUser } = authContext;
 
-  useEffect(() => {
-    if (user === null) {
-      getUser();
-    }
-  }, []);
+
 
   //determine which chart to display based on url params
   let coin;

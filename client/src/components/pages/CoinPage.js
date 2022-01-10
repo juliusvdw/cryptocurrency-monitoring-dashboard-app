@@ -23,9 +23,7 @@ const CoinPage = (props) => {
   const location = useLocation();
 
   useEffect(() => {
-    if (user === null) {
-      getUser();
-    }
+
     //Make the coin id lower case then fetch data
     const id = props.match.params.id;
     getCoinFeed(id.toLowerCase());
