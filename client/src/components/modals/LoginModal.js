@@ -8,7 +8,7 @@ const LoginModal = (props) => {
   const [password, setPassword] = useState("");
 
   const authContext = useContext(AuthContext);
-  const { userLogin } = authContext;
+  const { userLogin, loginLoading  } = authContext;
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -74,7 +74,9 @@ const LoginModal = (props) => {
             </div>
 
             <div className = 'text-right pr-2 mt-4'>
-            <button type  = ' submit' style = {btnStyle} className = 'btn btn-outline-primary'>Sign In</button>
+            <button type  = ' submit' style = {btnStyle} className = 'btn btn-outline-primary'> {!loginLoading ? <>Sign In</> : <div class="spinner-border spinner-border-sm" role="status">
+              <span class="sr-only">Loading...</span>
+              </div>}</button>
 
           </div>
         </Modal.Body>

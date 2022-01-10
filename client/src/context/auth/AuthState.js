@@ -7,11 +7,13 @@ import axios from "axios";
 import AuthContext from "./authContext";
 import AuthReducer from "./authReducer";
 
-import { SET_USER, CLEAR_WATCHLIST_COINS } from "../Types";
+import { SET_USER, SET_LOGIN_LOADING, SET_REGISTER_LOADING, CLEAR_LOGIN_LOADING, CLEAR_REGISTER_LOADING} from "../Types";
 
 const AuthState = (props) => {
   const initialState = {
     user: null,
+    loginLoading: false,
+    registerLoading:false
   };
 
   const [state, dispatch] = useReducer(AuthReducer, initialState);
@@ -47,6 +49,8 @@ const AuthState = (props) => {
 
   //User Login
   const userLogin = async (formData) => {
+
+    setLoading('login')
     try {
       //Login with firebase
       const data = await signInWithEmailAndPassword(auth, formData.username, formData.password)
@@ -58,6 +62,8 @@ const AuthState = (props) => {
     } catch (err) {
       console.log(err);
     }
+
+    clearLoading('login')
   };
 
   //Create watchlist
@@ -74,6 +80,8 @@ const AuthState = (props) => {
   //User Register
   const userRegister = async (formData) => {
 
+    setLoading('register')
+
     try {
       //Register with firebase
       const data = await createUserWithEmailAndPassword(auth,formData.username, formData.password)
@@ -86,7 +94,7 @@ const AuthState = (props) => {
       console.log(error.message)
     }
 
-    console.log(auth.currentUser)
+      clearLoading('register')
   };
 
 
@@ -101,14 +109,35 @@ const AuthState = (props) => {
     }
   };
 
+  //Set loading for login + register 
+  const setLoading = (authType) => {
+    if(authType == 'login') {
+      dispatch({type:SET_LOGIN_LOADING})
+    } else {
+      dispatch({type:SET_REGISTER_LOADING})
+    }
+  }
+
+  //Clear loading 
+  const clearLoading = (authType) => {
+    if(authType = 'login') {
+      dispatch({type:CLEAR_LOGIN_LOADING})
+    }else {
+      dispatch({type:CLEAR_REGISTER_LOADING})
+    }
+  }
+
   return (
     <AuthContext.Provider
       value={{
         user: state.user,
+        loginLoading:state.loginLoading,
+        registerLoading:state.registerLoading,
         userLogin,
         userRegister,
         userLogout,
         setUser,
+       
       }}
     >
       {props.children}

@@ -9,7 +9,7 @@ const RegisterModal = (props) => {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const authContext = useContext(AuthContext);
-  const { userRegister } = authContext;
+  const { userRegister, registerLoading } = authContext;
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -88,7 +88,9 @@ const RegisterModal = (props) => {
           </div>
 
           <div className = 'text-right pr-2 mt-4'>
-          <button type  = ' submit' style = {btnStyle} className = 'btn btn-outline-primary'>Create Account</button>
+          <button type  = ' submit' style = {btnStyle} className = 'btn btn-outline-primary'>{!registerLoading ? <>Create Account</> : <div class="spinner-border spinner-border-sm" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>} </button>
 
         </div>
         </Modal.Body>
@@ -126,7 +128,8 @@ const btnStyle = {
  height:'50px',
  borderRadius:'10px',
  fontWeight:'bold',
- fontSize:'13px'
+ fontSize:'13px',
+ minWidth:'100px'
 }
 
 const alreadyStyle = {
