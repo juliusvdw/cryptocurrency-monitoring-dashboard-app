@@ -1,4 +1,8 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
+import {  onAuthStateChanged } from "firebase/auth";
+import {collection, doc, getDoc} from 'firebase/firestore'
+import { auth, firestore } from "../../config/firebaseConfig";
+
 import axios from "axios";
 
 import WatchlistContext from "./watchlistContext";
@@ -30,6 +34,27 @@ const WatchlistState = (props) => {
     ],
   };
 
+  useEffect(() => {
+    onAuthStateChanged(auth, async (user) => {
+      if(user) {
+        console.log(user)
+        //Find user watchlist when user is logged in and set to watchlist state        
+        const docRef = doc(firestore, "users", `${user.uid}`);
+        const docSnap = await getDoc(docRef);
+        const userData= docSnap.data()
+
+        console.log(userData)
+
+        dispatch({ type: GET_WATCHLIST_COINS, payload: userData.watchlist });
+
+       
+
+      } else {
+        console.log('no user found')
+      }
+    })
+  }, [])
+
   const [state, dispatch] = useReducer(WatchlistReducer, initialState);
 
   //fetch data for each coin when loading watchlist from coingecko
@@ -45,18 +70,6 @@ const WatchlistState = (props) => {
     }
   };
 
-  const getWatchlist = async () => {
-    try {
-      const res = await axios.get("/watchlist");
-
-      
-      const watchlist = await res.data.watchlist;
-      console.log(watchlist);
-      dispatch({ type: GET_WATCHLIST_COINS, payload: watchlist });
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   const setCryptos = async (loadingID) => {
     setLoading(loadingID);
@@ -132,7 +145,6 @@ const WatchlistState = (props) => {
         cryptos: state.cryptos,
         getCoin,
         setCryptos,
-        getWatchlist,
         watchlistAdd,
         watchlistDelete,
       }}
