@@ -1,7 +1,8 @@
 import React, { useReducer, useEffect } from "react";
 import { useHistory, Redirect } from "react-router-dom";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
-import { auth } from "../../config/firebaseConfig";
+import { auth, firestore } from "../../config/firebaseConfig";
+import {collection, doc, setDoc} from 'firebase/firestore'
 import axios from "axios";
 
 import AuthContext from "./authContext";
@@ -86,6 +87,26 @@ const AuthState = (props) => {
       //Register with firebase
       const data = await createUserWithEmailAndPassword(auth,formData.username, formData.password)
       const user = data.user
+      const id = user.uid
+
+      //Create default watchlist 
+    const docData = {
+    id: id,
+    watchlist : [
+      { id: "bitcoin" },
+      { id: "dogecoin" },
+      { id: "ethereum" },
+      { id: "dash" },
+      { id: "wanchain" },
+      { id: "eos" },
+      { id: "cardano" },
+      { id: "monero" },
+    ]
+  
+  }
+  const newDoc = doc(firestore, `users/${id}`) 
+   setDoc(newDoc, docData)
+
   
       setRegisterModalShow(false);
       // window.location.reload();
