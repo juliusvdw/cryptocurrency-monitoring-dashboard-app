@@ -31,6 +31,7 @@ const Home = () => {
   //Fetch user on page load
   useEffect(() => {
     setCryptos();
+    
   }, []);
 
   return (
