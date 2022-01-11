@@ -1,7 +1,8 @@
-import React, { useReducer, useEffect } from "react";
+import React, { useReducer, useEffect, useContext } from "react";
 import { useHistory, Redirect } from "react-router-dom";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 import { auth, firestore } from "../../config/firebaseConfig";
+import { getAuth } from "firebase/auth";
 import {collection, doc, setDoc} from 'firebase/firestore'
 import axios from "axios";
 
@@ -23,7 +24,7 @@ const AuthState = (props) => {
 
   //Update user on auth state change 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+     onAuthStateChanged(auth, (user) => {
       if (user) {
         console.log(user, 'user logged in')
         //Store user info to be stored in user state with setUser
@@ -43,9 +44,12 @@ const AuthState = (props) => {
 
   
   //set User state
-  const setUser = (user) => {
-     dispatch({ type: SET_USER, payload: user });
+  const setUser =  (user) => {
+      dispatch({ type: SET_USER, payload: user });
   };
+
+  
+  
 
 
   //User Login
@@ -81,9 +85,9 @@ const AuthState = (props) => {
       //Create default watchlist + user info and  add to firestore
         const docData = {
         id: id,
-        email:formData.email,
+        email:formData.username,
         watchlist : [
-          { id: "bitcoin" },
+          { id: "solana" },
           { id: "dogecoin" },
           { id: "ethereum" },
           { id: "dash" },
