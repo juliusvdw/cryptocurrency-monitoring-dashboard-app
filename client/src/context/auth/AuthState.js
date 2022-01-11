@@ -67,17 +67,6 @@ const AuthState = (props) => {
     clearLoading('login')
   };
 
-  //Create watchlist
-  const createWatchlist = async () => {
-    try {
-      await axios.post(
-        "/watchlist/create"
-      );
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   //User Register
   const userRegister = async (formData) => {
 
@@ -89,23 +78,24 @@ const AuthState = (props) => {
       const user = data.user
       const id = user.uid
 
-      //Create default watchlist 
-    const docData = {
-    id: id,
-    watchlist : [
-      { id: "bitcoin" },
-      { id: "dogecoin" },
-      { id: "ethereum" },
-      { id: "dash" },
-      { id: "wanchain" },
-      { id: "eos" },
-      { id: "cardano" },
-      { id: "monero" },
-    ]
-  
-  }
-  const newDoc = doc(firestore, `users/${id}`) 
-   setDoc(newDoc, docData)
+      //Create default watchlist + user info and  add to firestore
+        const docData = {
+        id: id,
+        email:formData.email,
+        watchlist : [
+          { id: "bitcoin" },
+          { id: "dogecoin" },
+          { id: "ethereum" },
+          { id: "dash" },
+          { id: "wanchain" },
+          { id: "eos" },
+          { id: "cardano" },
+          { id: "monero" },
+        ]
+      
+      }
+      const newDoc = doc(firestore, `users/${id}`) 
+      await setDoc(newDoc, docData)
 
   
       setRegisterModalShow(false);
@@ -140,7 +130,7 @@ const AuthState = (props) => {
 
   //Clear loading 
   const clearLoading = (authType) => {
-    if(authType = 'login') {
+    if(authType == 'login') {
       dispatch({type:CLEAR_LOGIN_LOADING})
     }else {
       dispatch({type:CLEAR_REGISTER_LOADING})
