@@ -15,6 +15,7 @@ import {
   CLEAR_LOADING,
   WATCHLIST_ADD,
   WATCHLIST_DELETE,
+  CLEAR_WATCHLIST_COINS,
 } from "../Types";
 import watchlistContext from "./watchlistContext";
 
@@ -50,7 +51,7 @@ const WatchlistState = (props) => {
        
 
       } else {
-        console.log('no user found')
+        dispatch({type:CLEAR_WATCHLIST_COINS})
       }
     })
   }, [])
