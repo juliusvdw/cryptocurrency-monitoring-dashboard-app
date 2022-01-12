@@ -1,9 +1,10 @@
-import React, { useReducer, useEffect } from "react";
+import React, { useReducer, useEffect, useContext } from "react";
 import {  onAuthStateChanged } from "firebase/auth";
-import {collection, doc, getDoc} from 'firebase/firestore'
+import {collection, doc, getDoc,updateDoc } from 'firebase/firestore'
 import { auth, firestore } from "../../config/firebaseConfig";
 
 import axios from "axios";
+
 
 import WatchlistContext from "./watchlistContext";
 import WatchlistReducer from "./watchlistReducer";
@@ -17,7 +18,9 @@ import {
   WATCHLIST_DELETE,
   CLEAR_WATCHLIST_COINS,
 } from "../Types";
-import watchlistContext from "./watchlistContext";
+
+import AuthContext from "../auth/authContext";
+
 
 const WatchlistState = (props) => {
   const initialState = {
@@ -34,6 +37,10 @@ const WatchlistState = (props) => {
       { id: "cardano" },
     ],
   };
+
+  //Destructure what is needed from auth context
+  const authContext = useContext(AuthContext)
+  const {user} = authContext
 
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
@@ -98,15 +105,26 @@ const WatchlistState = (props) => {
   };
 
   const watchlistAdd = async (id) => {
-    try {
-      const res = await axios({
-        method: "put",
-        data: { coinId: id },
-        url: "/watchlist",
-      });
-      const watchlist = await res.data.watchlist;
 
-      dispatch({ type: WATCHLIST_ADD, payload: watchlist });
+    try {
+      //Find user watchlist and add coin to watchlist     
+      const docRef = doc(firestore, "users", `${user.id}`);
+      const docSnap = await getDoc(docRef);
+      const userData= docSnap.data()
+
+      const newWatchlist = userData.watchlist;
+      newWatchlist.push({id:id})
+
+      await updateDoc(docRef, {
+        watchlist:newWatchlist
+      })
+
+
+     
+
+      console.log(newWatchlist)
+
+      // dispatch({ type: WATCHLIST_ADD, payload: watchlist });
     } catch (err) {
       console.log(err);
     }
