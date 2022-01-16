@@ -44,6 +44,9 @@ const WatchlistState = (props) => {
 
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
+
+      setLoading('watchlist')
+
       if(user) {
         console.log(user)
         //Find user watchlist when user is logged in and set to watchlist state        
@@ -55,12 +58,17 @@ const WatchlistState = (props) => {
 
         dispatch({ type: GET_WATCHLIST_COINS, payload: userData.watchlist });
 
-       
+        clearLoading()
+
 
       } else {
         dispatch({type:CLEAR_WATCHLIST_COINS})
+
+        clearLoading()
+
       }
     })
+
   }, [])
 
   const [state, dispatch] = useReducer(WatchlistReducer, initialState);
