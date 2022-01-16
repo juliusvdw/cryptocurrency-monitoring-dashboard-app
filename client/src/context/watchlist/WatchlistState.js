@@ -119,6 +119,10 @@ const WatchlistState = (props) => {
         watchlist:newWatchlist
       })
 
+      //Update watchlist state
+      dispatch({ type: GET_WATCHLIST_COINS, payload: newWatchlist });
+
+
 
      
 
