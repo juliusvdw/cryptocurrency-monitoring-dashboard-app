@@ -122,10 +122,6 @@ const WatchlistState = (props) => {
       //Update watchlist state
       dispatch({ type: GET_WATCHLIST_COINS, payload: newWatchlist });
 
-
-
-     
-
       console.log(newWatchlist)
 
       // dispatch({ type: WATCHLIST_ADD, payload: watchlist });
@@ -135,17 +131,28 @@ const WatchlistState = (props) => {
   };
 
   const watchlistDelete = async (id) => {
+
+    //Remove coin instantly in local state
+    dispatch({ type: WATCHLIST_DELETE, payload: id.toLowerCase() });
+
     try {
-      const res = await axios({
-        method: "delete",
-        data: { coinId: id },
-        url: "/watchlist",
-      });
-      const watchlist = await res.data.watchlist;
+       //Find user watchlist and add coin to watchlist     
+       const docRef = doc(firestore, "users", `${user.id}`);
+       const docSnap = await getDoc(docRef);
+       const userData= docSnap.data()
+ 
+       let newWatchlist = userData.watchlist;
+       newWatchlist = newWatchlist.filter((coin) => {
+         return coin.id != id.toLowerCase()
+       })
 
-      id = id.toLowerCase();
+       console.log(newWatchlist)
+ 
+       await updateDoc(docRef, {
+         watchlist:newWatchlist
+       });
 
-      dispatch({ type: WATCHLIST_DELETE, payload: id });
+
       // window.location.reload();
     } catch (err) {
       console.log(err);
